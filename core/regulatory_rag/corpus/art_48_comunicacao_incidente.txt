@@ -1,0 +1,30 @@
+Artigo: 48º
+Tema: Comunicação de incidente de segurança
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 48º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 48º trata do dever de comunicação de incidente de segurança. O
+controlador deve comunicar à autoridade nacional (ANPD) e ao titular a
+ocorrência de incidente de segurança que possa acarretar risco ou dano
+relevante aos titulares, em prazo razoável, conforme definido pela ANPD.
+
+A comunicação deve informar, no mínimo: a descrição da natureza dos dados
+pessoais afetados; as informações sobre os titulares envolvidos; a indicação
+das medidas técnicas e de segurança utilizadas para a proteção dos dados,
+observados os segredos comercial e industrial; os riscos relacionados ao
+incidente; os motivos da eventual demora na comunicação (quando aplicável); e
+as medidas que foram ou que serão adotadas para reverter ou mitigar os efeitos
+do prejuízo.
+
+O artigo também prevê que a ANPD verificará a gravidade do incidente e poderá
+determinar ao controlador a adoção de providências, tais como ampla divulgação
+do fato aos meios de comunicação e a adoção de medidas para reverter ou mitigar
+os efeitos do incidente.
+
+Para operações de IA, um "incidente" nesse sentido pode incluir desde um
+vazamento de banco de dados até um ataque de extração de dados de treinamento
+ou uma falha de prompt injection que exponha dados pessoais de outros usuários
+(ver módulo Prompt Security) — por isso a trilha de auditoria (hash-chain) e a
+resposta rápida a incidentes são parte da postura de conformidade deste
+projeto.

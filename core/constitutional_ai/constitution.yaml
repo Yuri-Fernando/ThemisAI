@@ -1,0 +1,80 @@
+# Constituição declarativa do Themis AI — versão simples (V2).
+#
+# Cada artigo é um princípio "linha vermelha": se `forbidden_when` casar com o
+# `context` avaliado, é uma VIOLAÇÃO (o princípio proíbe aquela combinação de
+# sinais). Formato deliberadamente mais simples que `policy_engine/policies.yaml`
+# (sem branching de outcomes) — versão "simples" citada no ROADMAP original.
+#
+# `forbidden_when.context` faz match por igualdade (`context[chave] == valor`);
+# todas as chaves declaradas precisam casar (AND) para a violação disparar.
+
+constitution:
+  - id: "CONST-01"
+    principle: "Transparência"
+    description: >
+      Nenhuma decisão automatizada pode ser implantada sem que o titular dos
+      dados consiga obter uma explicação em linguagem clara sobre os critérios
+      utilizados (LGPD Art. 20, c/c Art. 9º).
+    forbidden_when:
+      context:
+        automated_decision: true
+        explainable: false
+    severity: high
+
+  - id: "CONST-02"
+    principle: "Não-discriminação"
+    description: >
+      Nenhum sistema de decisão pode ser implantado em produção após uma
+      auditoria de equidade (fairness_audit) reprovada.
+    forbidden_when:
+      context:
+        fairness_audit_passed: false
+    severity: critical
+
+  - id: "CONST-03"
+    principle: "Supervisão humana"
+    description: >
+      Decisões automatizadas de alto impacto (ex. crédito, emprego, acesso a
+      benefícios) exigem via de recurso e revisão humana disponível (LGPD
+      Art. 20, §1º).
+    forbidden_when:
+      context:
+        automated_decision: true
+        high_impact: true
+        human_review_available: false
+    severity: critical
+
+  - id: "CONST-04"
+    principle: "Minimização de dados"
+    description: >
+      Tratamento de dado sensível sem finalidade específica declarada não é
+      permitido, independentemente da base legal (LGPD Art. 6º, III).
+    forbidden_when:
+      context:
+        data_category: "sensitive"
+        purpose_specified: false
+    severity: high
+
+  - id: "CONST-05"
+    principle: "Prestação de contas"
+    description: >
+      Todo sistema de decisão automatizada em produção precisa ter trilha de
+      auditoria ativa (audit_logs) — operar sem log de auditoria quebra a
+      responsabilização (accountability, LGPD Art. 6º, X).
+    forbidden_when:
+      context:
+        in_production: true
+        audit_logging_enabled: false
+    severity: critical
+
+  - id: "CONST-06"
+    principle: "Segurança"
+    description: >
+      Nenhum sistema pode ser implantado em produção sem que o scanner de
+      segurança de prompt (prompt_security) tenha sido executado ao menos uma
+      vez sobre os prompts de produção (LGPD Art. 46).
+    forbidden_when:
+      context:
+        in_production: true
+        prompt_security_scanned: false
+    severity: medium

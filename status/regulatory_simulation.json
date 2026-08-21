@@ -1,0 +1,13 @@
+{
+  "module": "regulatory_simulation",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "simulate_regulatory_change(article_number, context_override, test_scenarios) -> RegulatoryChangeImpact — composição real de regulatory_knowledge_graph + regulatory_sandbox"
+  ],
+  "notebook": "notebooks/regulatory_simulation_dev_log.ipynb",
+  "notes": "Não simula mudança na lei em si (fora de escopo) -- simula impacto operacional hipotético sobre cenários de teste reais.",
+  "updated_at": "2026-08-21T00:00:00"
+}

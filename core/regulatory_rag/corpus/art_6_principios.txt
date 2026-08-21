@@ -1,0 +1,35 @@
+Artigo: 6º
+Tema: Princípios do tratamento de dados pessoais
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 6º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 6º estabelece os princípios que devem orientar toda atividade de
+tratamento de dados pessoais. Em linhas gerais, esses princípios são: finalidade
+(o tratamento deve ter propósitos legítimos, específicos, explícitos e
+informados ao titular, sem possibilidade de tratamento posterior incompatível
+com essas finalidades); adequação (compatibilidade do tratamento com as
+finalidades informadas); necessidade (limitação do tratamento ao mínimo
+necessário para realizar suas finalidades, evitando coleta excessiva —
+princípio de minimização de dados).
+
+Também constam: livre acesso (garantia de consulta facilitada e gratuita sobre
+a forma e a duração do tratamento, bem como sobre a integralidade dos dados
+pessoais); qualidade dos dados (garantia de exatidão, clareza, relevância e
+atualização dos dados); transparência (garantia de informações claras, precisas
+e acessíveis sobre o tratamento e os respectivos agentes, resguardados segredos
+comercial e industrial); segurança (uso de medidas técnicas e administrativas
+aptas a proteger os dados de acessos não autorizados e de situações acidentais
+ou ilícitas de destruição, perda, alteração, comunicação ou difusão).
+
+Fecham a lista: prevenção (adoção de medidas para prevenir a ocorrência de
+danos em virtude do tratamento); não discriminação (impossibilidade de realizar
+o tratamento para fins discriminatórios ilícitos ou abusivos); e
+responsabilização/prestação de contas (accountability — demonstração, pelo
+agente de tratamento, da adoção de medidas eficazes e capazes de comprovar a
+observância e o cumprimento das normas de proteção de dados).
+
+Para sistemas de IA, esses princípios costumam ser operacionalizados como
+critérios de auditoria: minimização de dados de treinamento/inferência,
+documentação de finalidade, e trilhas de auditoria que demonstrem
+accountability.

@@ -1,0 +1,31 @@
+Artigo: 20º
+Tema: Decisões automatizadas sobre a pessoa (direito de revisão)
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 20º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 20º é o dispositivo da LGPD mais diretamente relacionado à governança de
+sistemas de Inteligência Artificial. Ele estabelece que o titular dos dados tem
+direito a solicitar a revisão, por pessoa natural, de decisões tomadas
+unicamente com base em tratamento automatizado de dados pessoais que afetem
+seus interesses — isso inclui decisões destinadas a definir o seu perfil
+pessoal, profissional, de consumo e de crédito, ou aspectos de sua
+personalidade (o chamado "profiling").
+
+Em outras palavras: uma decisão que impacte uma pessoa (aprovação/negativa de
+crédito, triagem de currículo, precificação personalizada, recomendação
+médica, moderação de conteúdo, entre outros) não pode ser tomada de forma
+totalmente automatizada, sem qualquer possibilidade de intervenção humana ou
+de explicação, quando o titular solicitar revisão.
+
+O controlador deve fornecer, sempre que solicitado, informações claras e
+adequadas a respeito dos critérios e dos procedimentos utilizados para a
+decisão automatizada, resguardados os segredos comercial e industrial (o
+mesmo resguardo previsto no Art. 9º). Em caso de não observância desse dever,
+a autoridade nacional (ANPD) pode determinar auditoria nos sistemas utilizados
+para a tomada de decisão automatizada.
+
+Para sistemas de IA generativa e modelos de decisão automatizada, este artigo é
+o ponto de partida da exigência de explicabilidade (ver módulo Explainability)
+e de possibilidade de contestação humana — dois requisitos que devem constar
+na RIPD sempre que um sistema toma ou apoia decisões sobre pessoas.

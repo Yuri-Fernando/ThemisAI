@@ -1,0 +1,15 @@
+{
+  "module": "red_team_lab",
+  "version": "0.1.1",
+  "status": "done",
+  "tests_total": 10,
+  "tests_passed": 10,
+  "capabilities": [
+    "run_red_team_suite(scan_fn=None, payloads=None) -> RedTeamReport",
+    "12 payloads de ataque reais contra prompt_security (injeção, jailbreak, exfiltração, ofuscação, evasão dedicada, controles benignos)",
+    "Medição real da taxa de detecção contra o motor de produção, sem hardcode"
+  ],
+  "notebook": "notebooks/red_team_lab_dev_log.ipynb",
+  "notes": "V5 item 1: RT-01/RT-06 corrigidos (bugs de regex reais em prompt_security, não limitação fundamental) -- taxa de detecção subiu de 50% para 67% (10/12). RT-08/RT-09 (evasão por paráfrase/homoglifos) permanecem gaps reais e conhecidos.",
+  "updated_at": "2026-08-21T00:00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "module": "ai_observability",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "ObservabilityRecorder — registro em memória de métricas de chamadas (record/snapshot/reset)",
+    "traced(recorder, module, function) — context manager que mede duração real (time.perf_counter) e captura status ok/error sem engolir exceções",
+    "export_prometheus_text(snapshot) -> str — formato de exposição de texto do Prometheus, pronto para servir num endpoint /metrics real"
+  ],
+  "notebook": "notebooks/ai_observability_dev_log.ipynb",
+  "notes": "Registro em memória, sem coletor/exporter de rede real subindo. Ligar a opentelemetry-sdk e/ou endpoint /metrics em core/governance_copilot é TODO explícito de onda futura.",
+  "updated_at": "2026-08-20T00:00:00"
+}

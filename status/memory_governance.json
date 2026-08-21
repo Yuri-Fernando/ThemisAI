@@ -1,0 +1,14 @@
+{
+  "module": "memory_governance",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 8,
+  "tests_passed": 8,
+  "capabilities": [
+    "MemoryStore.store(content, ttl_days=None) -> MemoryItem — redação automática via pii_detection.detect real",
+    "MemoryStore.list_active() / purge_expired()"
+  ],
+  "notebook": "notebooks/memory_governance_dev_log.ipynb",
+  "notes": "Redação é comportamento padrão obrigatório, não opcional. Nenhuma lógica de PII reimplementada.",
+  "updated_at": "2026-08-20T00:00:00"
+}

@@ -1,0 +1,6 @@
+# Themis AI — dependências V1 (motor de IA 100% local, sem chave de API)
+# Split em dois arquivos para instalação mais rápida/paralela:
+#   requirements-core.txt  -> leve, usado por quase todos os módulos
+#   requirements-heavy.txt -> pesado (embeddings/RAG/NER/dashboard), só onde necessário
+-r requirements-core.txt
+-r requirements-heavy.txt

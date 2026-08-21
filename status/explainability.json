@@ -1,0 +1,17 @@
+{
+  "module": "explainability",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 12,
+  "tests_passed": 12,
+  "capabilities": [
+    "Motor determinístico (não-ML) de explicabilidade genérica via explain(factors, subject, narrative_template=None)",
+    "Ordenação de fatores por magnitude de contribuição (|valor|, decrescente)",
+    "Narrativa em português natural com tratamento de fatores positivos, negativos, mistos, vazios e neutros",
+    "Suporte a narrative_template customizado (modo molde com {subject}/{body} ou modo prefixo)",
+    "Standalone: importa apenas shared.schemas.ExplainabilityResult, pronto para injeção de dependência por trust_score, policy_engine e ripd_engine"
+  ],
+  "notebook": "notebooks/explainability_dev_log.ipynb",
+  "notes": "Sem chamadas externas; motor puramente determinístico (regras + template), sem dependências além de shared.schemas e da stdlib.",
+  "updated_at": "2026-08-19T00:15:00"
+}

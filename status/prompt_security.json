@@ -1,0 +1,17 @@
+{
+  "module": "prompt_security",
+  "version": "0.1.1",
+  "status": "done",
+  "tests_total": 39,
+  "tests_passed": 39,
+  "capabilities": [
+    "Detecção de prompt injection (PT/EN) via regex",
+    "Detecção de jailbreak (DAN, developer mode, roleplay bypass) via regex",
+    "Detecção de exfiltração de dados sensíveis (system prompt, chaves, dados de outros usuários)",
+    "Detecção de ofuscação (base64/hex longos, caracteres zero-width)",
+    "Score determinístico [0.0, 1.0] com limiar SAFE_THRESHOLD documentado"
+  ],
+  "notebook": "notebooks/prompt_security_dev_log.ipynb",
+  "notes": "Sem chamadas externas; 100% regex/heurística, sem ML. V5 item 1 (2026-08-21): corrigidos 2 gaps reais de detecção em PT achados por red_team_lab (ignore_previous_instructions e other_users_data). Ainda honestamente frágil contra evasão dedicada (paráfrase, homoglifos, ofuscação em camadas) — ver limitações no notebook e CHANGELOG.md.",
+  "updated_at": "2026-08-21T00:00:00"
+}

@@ -1,0 +1,28 @@
+Artigo: 9º
+Tema: Direito de acesso a informações sobre o tratamento (transparência)
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 9º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 9º detalha o princípio da transparência, previsto no Art. 6º, na forma de
+um direito concreto do titular: obter do controlador informações claras,
+adequadas e ostensivas sobre os critérios e os procedimentos utilizados para a
+decisão de tratamento, resguardados os segredos comercial e industrial.
+
+Entre as informações que devem ser disponibilizadas ao titular, de forma
+facilitada e em linguagem acessível, estão: a finalidade específica do
+tratamento; a forma e a duração do tratamento (quando aplicável); a
+identificação do controlador (nome/razão social e contato); as informações de
+contato do controlador ou do encarregado (DPO); indicação dos agentes com quem
+o controlador realiza uso compartilhado de dados e a finalidade desse
+compartilhamento; e as responsabilidades dos agentes que realizarão o
+tratamento, quando aplicável.
+
+O artigo também prevê que o consentimento — quando essa for a base legal
+utilizada — deve se referir a finalidades determinadas, sendo nulas as
+autorizações genéricas ("carta branca") para tratamento de dados pessoais.
+
+Para sistemas de IA que tomam decisões ou fazem recomendações a partir de dados
+pessoais, esse artigo se conecta diretamente ao Art. 20º: a transparência sobre
+"critérios e procedimentos" é um pré-requisito para que o titular possa depois
+solicitar revisão de uma decisão automatizada.

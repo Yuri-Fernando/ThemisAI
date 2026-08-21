@@ -1,0 +1,17 @@
+{
+  "module": "fairness_audit",
+  "version": "0.2.0",
+  "status": "done",
+  "tests_total": 18,
+  "tests_passed": 18,
+  "capabilities": [
+    "audit_fairness(records, outcome_key, protected_attribute_key, favorable_outcome=True, threshold=0.8) -> FairnessAuditResult",
+    "Disparate impact ratio (regra dos 80%, convenção EEOC) por grupo vs. grupo de referência",
+    "Demographic parity difference por grupo vs. grupo de referência",
+    "chi_square_significance(records, outcome_key, protected_attribute_key, alpha=0.05) -> FairnessSignificanceResult — teste qui-quadrado real (scipy)",
+    "Resumo determinístico em português"
+  ],
+  "notebook": "notebooks/fairness_audit_dev_log.ipynb",
+  "notes": "V5 item 12 (2026-08-21): teste de significância estatística real adicionado, fecha a limitação documentada na v0.1.0. Ainda não controla variáveis confundidoras multivariadas (isso é o causal_fairness, V3 extração real).",
+  "updated_at": "2026-08-21T00:00:00"
+}

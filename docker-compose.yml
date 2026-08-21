@@ -1,0 +1,40 @@
+# Sobe API (Governance Copilot, FastAPI) + Dashboard (Streamlit) com um
+# único comando: `docker compose up --build`.
+#
+# Volumes montam os dados reais do repo (audit_logs, blockchain_audit_layer,
+# human_oversight, incident_response, memory_governance, regulatory_rag já
+# indexado) dentro do container, para persistir entre reinícios sem
+# reconstruir a imagem — mesmo padrão de dev local, só containerizado.
+
+services:
+  api:
+    build: .
+    command: >
+      uvicorn core.governance_copilot:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./core/audit_logs/data:/app/core/audit_logs/data
+      - ./core/blockchain_audit_layer/data:/app/core/blockchain_audit_layer/data
+      - ./core/human_oversight/data:/app/core/human_oversight/data
+      - ./core/incident_response/data:/app/core/incident_response/data
+      - ./core/memory_governance/data:/app/core/memory_governance/data
+      - ./core/regulatory_rag/data:/app/core/regulatory_rag/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  dashboard:
+    build: .
+    command: >
+      streamlit run apps/dashboard/app.py --server.address=0.0.0.0 --server.port=8501
+    environment:
+      - THEMIS_API_URL=http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy

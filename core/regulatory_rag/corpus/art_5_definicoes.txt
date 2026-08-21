@@ -1,0 +1,33 @@
+Artigo: 5º
+Tema: Definições (dado pessoal, dado sensível, anonimização, tratamento)
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 5º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 5º reúne as definições centrais usadas em todo o restante da lei. De forma
+resumida: dado pessoal é qualquer informação relacionada a uma pessoa natural
+identificada ou identificável (nome, e-mail, CPF, localização, identificador
+online, entre outros). Dado pessoal sensível é uma subcategoria mais protegida,
+que inclui origem racial ou étnica, convicção religiosa, opinião política,
+filiação sindical ou a organização de caráter religioso/filosófico/político,
+dado referente à saúde ou à vida sexual, e dado genético ou biométrico quando
+vinculado a uma pessoa natural.
+
+Tratamento de dados pessoais é definido de forma bastante ampla: abrange
+praticamente qualquer operação realizada sobre o dado, como coleta, produção,
+recepção, classificação, utilização, acesso, reprodução, transmissão,
+distribuição, processamento, arquivamento, armazenamento, eliminação,
+avaliação ou controle da informação, modificação, comunicação, transferência,
+difusão ou extração.
+
+Anonimização é o processo pelo qual um dado deixa de poder ser associado, direta
+ou indiretamente, a um indivíduo, considerando os meios técnicos disponíveis na
+época do tratamento — um dado efetivamente anonimizado deixa de ser considerado
+dado pessoal para fins da lei, o que o diferencia da pseudonimização (que ainda
+permite reidentificação por quem detém a chave/informação adicional).
+
+O artigo também define outros papéis relevantes, como titular (a pessoa natural
+a quem os dados se referem), controlador (quem toma as decisões sobre o
+tratamento) e operador (quem realiza o tratamento em nome do controlador) —
+conceitos usados por outros módulos deste sistema para classificar dados
+processados por modelos de IA.

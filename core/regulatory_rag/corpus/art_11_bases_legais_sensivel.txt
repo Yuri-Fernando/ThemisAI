@@ -1,0 +1,32 @@
+Artigo: 11º
+Tema: Bases legais para tratamento de dado pessoal sensível
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 11º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 11º trata especificamente do tratamento de dado pessoal sensível —
+categoria definida no Art. 5º (origem racial/étnica, convicção religiosa,
+opinião política, filiação sindical/organização de caráter religioso, dado de
+saúde ou vida sexual, dado genético ou biométrico). O tratamento desses dados
+exige uma base legal mais restrita do que a lista geral do Art. 7º.
+
+As hipóteses previstas incluem, resumidamente: consentimento do titular,
+fornecido de forma específica e destacada, para finalidades específicas
+(mais rigoroso que o consentimento genérico para dado comum); cumprimento de
+obrigação legal ou regulatória pelo controlador; tratamento compartilhado
+necessário à execução de políticas públicas por órgãos públicos; realização de
+estudos por órgão de pesquisa, com anonimização sempre que possível; exercício
+regular de direitos, inclusive em contrato e em processo judicial,
+administrativo ou arbitral.
+
+Também estão previstas hipóteses ligadas à proteção da vida ou da incolumidade
+física do titular ou de terceiro; tutela da saúde, em procedimento realizado
+por profissionais de saúde ou por entidades sanitárias; e garantia da
+prevenção à fraude e à segurança do titular em processos de identificação e
+autenticação de cadastro em sistemas eletrônicos.
+
+Diferentemente do Art. 7º, o "legítimo interesse" do controlador NÃO é, em
+regra, base legal válida para dado sensível — por isso sistemas de IA que
+processam dado de saúde, biometria facial ou dado genético precisam de uma
+base legal listada explicitamente neste artigo, tipicamente consentimento
+específico ou tutela da saúde.

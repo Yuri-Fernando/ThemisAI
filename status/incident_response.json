@@ -1,0 +1,15 @@
+{
+  "module": "incident_response",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 12,
+  "tests_passed": 12,
+  "capabilities": [
+    "IncidentLog.report_incident/list_incidents/update_status/get — ciclo de vida open -> investigating -> resolved",
+    "get_runbook(severity) -> list[str] — runbook declarativo real por severidade (runbooks.yaml)",
+    "related_event_ids liga incidentes a eventos reais do audit_logs"
+  ],
+  "notebook": "notebooks/incident_response_dev_log.ipynb",
+  "notes": "Integração automática (red_team_lab/blockchain_audit_layer abrindo incidente sozinho) é TODO de onda futura. Runbook é conteúdo de referência real, precisa ser adaptado por cada organização.",
+  "updated_at": "2026-08-20T00:00:00"
+}

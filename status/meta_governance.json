@@ -1,0 +1,13 @@
+{
+  "module": "meta_governance",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 8,
+  "tests_passed": 8,
+  "capabilities": [
+    "audit_federation_health(node_health, compliance_threshold=1.0) -> MetaGovernanceReport — governança sobre governança"
+  ],
+  "notebook": "notebooks/meta_governance_dev_log.ipynb",
+  "notes": "Testado com integração real contra self_healing_governance.check_and_heal.",
+  "updated_at": "2026-08-21T00:00:00"
+}

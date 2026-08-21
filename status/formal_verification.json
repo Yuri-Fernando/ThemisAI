@@ -1,0 +1,14 @@
+{
+  "module": "formal_verification",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 6,
+  "tests_passed": 6,
+  "capabilities": [
+    "verify_invariant(property_name, domain, check_fn) -> VerificationResult — model checking por enumeração exaustiva de domínio finito",
+    "verify_tribunal_deny_precedence() — verifica exaustivamente (4.368 combinações) que agent_tribunal.adjudicate() sempre escolhe DENY quando presente"
+  ],
+  "notebook": "notebooks/formal_verification_dev_log.ipynb",
+  "notes": "Extração real e honesta do V3 (não é TLA+/Alloy/Coq — é enumeração de força bruta sobre domínio finito, não prova simbólica de espaço infinito).",
+  "updated_at": "2026-08-21T00:00:00"
+}

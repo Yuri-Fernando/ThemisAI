@@ -1,0 +1,13 @@
+# Dependências pesadas — só regulatory_rag (embeddings/RAG), pii_detection (NER opcional)
+# e apps/dashboard precisam disso. Instalar separado do core para não travar os outros módulos.
+spacy>=3.7
+sentence-transformers>=3.0
+chromadb>=0.5
+streamlit>=1.37
+
+# V2 — sensitive_data_scanner (extração de texto de documentos)
+pypdf>=5.0
+python-docx>=1.1
+
+# V2 — regulatory_knowledge_graph (Onda 2)
+networkx>=3.3

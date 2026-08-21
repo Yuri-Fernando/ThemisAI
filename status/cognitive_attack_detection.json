@@ -1,0 +1,13 @@
+{
+  "module": "cognitive_attack_detection",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "scan_conversation(turns, window_size=3) -> ConversationScanResult — reassembla janelas de turnos e re-varre com prompt_security.scan real"
+  ],
+  "notebook": "notebooks/cognitive_attack_detection_dev_log.ipynb",
+  "notes": "Achado empírico real de fragmentação de payload entre turnos usado nos testes, não fabricado.",
+  "updated_at": "2026-08-21T00:00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "module": "governance_copilot",
+  "version": "0.2.0",
+  "status": "done",
+  "tests_total": 30,
+  "tests_passed": 30,
+  "capabilities": [
+    "12 endpoints REST: health, metrics, pii/detect, prompt-security/scan, policy/evaluate, ripd/generate, ripd (list+get), audit/verify, audit/events, audit/trace/{id}, health-check/run",
+    "Autenticação opcional por X-API-Key (THEMIS_API_KEY), desabilitada por padrão",
+    "CORS configurável (THEMIS_CORS_ORIGINS)",
+    "Enforcement real via @enforce (runtime_policy_enforcement) em todo endpoint, autorização declarada em multi_agent_governance/agents.yaml",
+    "Métricas reais via ai_observability (/metrics, formato Prometheus)",
+    "Trilha de auditoria por trace_id para pii/detect, prompt-security/scan, policy/evaluate (antes sem nenhum evento)",
+    "Fila de revisão humana alimentada automaticamente (human_oversight) a partir de PolicyDecision REQUIRES_HUMAN_REVIEW",
+    "RIPDs gerados persistidos e consultáveis (ripd_store)"
+  ],
+  "notebook": "notebooks/governance_copilot_dev_log.ipynb",
+  "notes": "V5 (2026-08-21): fechou os itens 3,4,6,7,8,14 do plano de melhorias + versão honesta do item 5 (health-check sob demanda, sem scheduler embutido). 30/30 testes (13 da v0.1.0 sem alteração + 17 novos). Itens 9 (ancoragem externa) e 10 (OCR) continuam fora de escopo.",
+  "updated_at": "2026-08-21T00:00:00"
+}

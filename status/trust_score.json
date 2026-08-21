@@ -1,0 +1,20 @@
+{
+  "module": "trust_score",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 20,
+  "tests_passed": 20,
+  "capabilities": [
+    "compute_trust_score(pii_result, policy_decisions, prompt_security=None, explanation=None) -> TrustScoreResult",
+    "Fórmula aditiva documentada: penalidade de PII sensível (15pt/achado, teto 45) e pessoal comum (4pt/achado, teto 20)",
+    "Veto por PolicyDecisionStatus.DENY: piso de 5.0 no score, garante RiskLevel.CRITICAL",
+    "REQUIRES_HUMAN_REVIEW: 20pt por ocorrência; ALLOW_WITH_MITIGATION: 5pt por mitigação pendente",
+    "PromptSecurityResult opcional: penalidade contínua (1-score)*30 + penalidade fixa de 15pt se is_safe=False",
+    "Mapeamento score -> RiskLevel documentado (>=80 LOW, 50-79 MEDIUM, 20-49 HIGH, <20 CRITICAL)",
+    "components: dict[str, float] pronto para alimentar ExplainabilityResult.factors",
+    "explanation repassado sem modificação (nunca gerado internamente) — arquitetura de injeção de dependência, não importa pii_detection/policy_engine/prompt_security/explainability"
+  ],
+  "notebook": "notebooks/trust_score_dev_log.ipynb",
+  "notes": "Módulo agregador puro (dependency injection). 20/20 testes pytest passando no venv C:/Users/Yuri_/.venvs/athenagov-ai. Notebook com 3 cenários reais executados (ótimo, DENY, intermediário) e suíte de testes rodada via subprocess, saídas reais embutidas. Integração real (chamar pii_detection/policy_engine/prompt_security/explainability e alimentar este módulo) fica para o Governance Copilot na Onda 2.",
+  "updated_at": "2026-08-19T13:29:13"
+}

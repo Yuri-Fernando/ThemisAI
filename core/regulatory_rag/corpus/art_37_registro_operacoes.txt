@@ -1,0 +1,25 @@
+Artigo: 37º
+Tema: Registro das operações de tratamento de dados pessoais
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 37º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 37º estabelece que o controlador e o operador devem manter registro das
+operações de tratamento de dados pessoais que realizarem, especialmente quando
+baseado no legítimo interesse. Esse registro documenta o quê, quando, por que
+e como os dados são tratados, e é um dos principais instrumentos de
+accountability (prestação de contas) exigidos pela lei.
+
+Na prática, esse registro costuma incluir: as categorias de dados tratados; as
+finalidades do tratamento; a base legal utilizada; os agentes envolvidos
+(controlador, operadores, eventuais terceiros com quem há compartilhamento); o
+tempo de retenção; e as medidas de segurança adotadas. A autoridade nacional
+(ANPD) pode determinar ao controlador a elaboração de relatório de impacto à
+proteção de dados pessoais (RIPD) relativo às suas operações de tratamento,
+inclusive com base em dados de natureza pública.
+
+Para plataformas que operam múltiplos sistemas de IA, manter esse registro de
+forma estruturada e consultável é o que permite responder rapidamente a uma
+fiscalização da ANPD ou a uma auditoria interna, e é o alicerce de dados sobre
+o qual módulos de trilha de auditoria (hash-chain) e o Governance Copilot deste
+projeto se apoiam para gerar evidências de conformidade.

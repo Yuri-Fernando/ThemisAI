@@ -1,0 +1,14 @@
+{
+  "module": "synthetic_data",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 11,
+  "tests_passed": 11,
+  "capabilities": [
+    "generate_cpf(rng=None) -> str — dígito verificador módulo 11 real, estruturalmente válido",
+    "generate_person_record(seed=None) / generate_dataset(n, seed=None) — determinísticos, nunca correspondem a pessoa real"
+  ],
+  "notebook": "notebooks/synthetic_data_dev_log.ipynb",
+  "notes": "Round-trip real validado contra pii_detection.detect() (confiança >= 0.9). Sem dependência de Faker. E-mails sempre em domínio .test.",
+  "updated_at": "2026-08-20T00:00:00"
+}

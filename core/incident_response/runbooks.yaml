@@ -1,0 +1,29 @@
+# Runbook declarativo de resposta a incidentes de IA/LGPD, por severidade.
+# Conteúdo real de referência (não gerado por LLM) — passos padrão de resposta
+# a incidentes adaptados para o contexto de sistemas de IA/dados pessoais.
+
+runbooks:
+  critical:
+    steps:
+      - "Conter: suspender imediatamente o sistema/decisão automatizada envolvida."
+      - "Preservar evidências: exportar os eventos de audit_logs relacionados antes de qualquer remediação."
+      - "Avaliar impacto: quantos titulares de dados foram afetados? Há vazamento de dado sensível?"
+      - "Notificar: LGPD Art. 48 exige comunicação à ANPD e ao titular em caso de incidente de segurança com risco relevante — avaliar prazo (\"prazo razoável\")."
+      - "Escalar para revisão humana (human_oversight) antes de qualquer reativação."
+      - "Post-mortem obrigatório, documentado, com causa raiz e plano de remediação."
+  high:
+    steps:
+      - "Conter: restringir o escopo do sistema afetado (ex. desativar apenas a funcionalidade envolvida)."
+      - "Preservar evidências relevantes em audit_logs."
+      - "Avaliar necessidade de notificação (LGPD Art. 48) caso a caso."
+      - "Corrigir e validar com testes antes de reativar."
+      - "Registrar no post-mortem, mesmo que não obrigatório."
+  medium:
+    steps:
+      - "Investigar causa raiz sem necessidade de suspensão imediata."
+      - "Corrigir na próxima janela de manutenção planejada."
+      - "Documentar no log de incidentes para acompanhamento de tendência."
+  low:
+    steps:
+      - "Registrar para acompanhamento; sem ação imediata obrigatória."
+      - "Revisar em batch periódico de incidentes de baixa severidade."

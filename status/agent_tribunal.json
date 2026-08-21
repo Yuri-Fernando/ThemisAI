@@ -1,0 +1,14 @@
+{
+  "module": "agent_tribunal",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "adjudicate(decisions: list[PolicyDecision]) -> TribunalVerdict — decisão mais restritiva vence",
+    "Fecha TODO real deixado pelo policy_engine V1 (agregação de decisões concorrentes)"
+  ],
+  "notebook": "notebooks/agent_tribunal_dev_log.ipynb",
+  "notes": "Regra de precedência fixa (DENY > REQUIRES_HUMAN_REVIEW > ALLOW_WITH_MITIGATION > ALLOW), desempate por risk_level. Testado inclusive contra decisões reais de policy_engine.evaluate().",
+  "updated_at": "2026-08-20T00:00:00"
+}

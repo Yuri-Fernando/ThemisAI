@@ -1,0 +1,16 @@
+{
+  "module": "constitutional_ai",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 10,
+  "tests_passed": 10,
+  "capabilities": [
+    "check_constitution(context, constitution_path=None) -> ConstitutionalCheckResult",
+    "6 princípios declarativos reais em constitution.yaml (transparência, não-discriminação, supervisão humana, minimização de dados, prestação de contas, segurança)",
+    "Formato mais simples que policy_engine (condição única por artigo, sem branching)",
+    "Suporta constituições customizadas via constitution_path"
+  ],
+  "notebook": "notebooks/constitutional_ai_dev_log.ipynb",
+  "notes": "Complementar ao policy_engine: define invariantes que nunca podem ser violadas, independente de qual política se aplique. Match de condição só por igualdade simples (sem operadores _any/_all como no policy_engine) — TODO de extensão se necessário.",
+  "updated_at": "2026-08-20T00:00:00"
+}

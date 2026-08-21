@@ -1,0 +1,16 @@
+{
+  "module": "human_oversight",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 10,
+  "tests_passed": 10,
+  "capabilities": [
+    "OversightQueue.enqueue(subject, reason, risk_level) -> OversightItem",
+    "OversightQueue.list_items(status=None) -> list[OversightItem]",
+    "OversightQueue.decide(item_id, approve, reviewer, notes=None) -> OversightItem",
+    "Persistência real em JSON (mutável, diferente do jsonl append-only do audit_logs)"
+  ],
+  "notebook": "notebooks/human_oversight_dev_log.ipynb",
+  "notes": "Alimentação típica: PolicyDecision com status REQUIRES_HUMAN_REVIEW do policy_engine. Integração automática (governance_copilot enfileirando sozinho) é TODO de onda futura. Sem autenticação/autorização de quem decide (reviewer é string livre) — mesma decisão de escopo do governance_copilot V1 (uso local).",
+  "updated_at": "2026-08-20T00:00:00"
+}

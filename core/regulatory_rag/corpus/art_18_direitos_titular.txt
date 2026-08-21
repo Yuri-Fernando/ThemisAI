@@ -1,0 +1,30 @@
+Artigo: 18º
+Tema: Direitos do titular dos dados
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 18º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 18º reúne o catálogo de direitos que o titular dos dados pode exercer
+perante o controlador, mediante requisição, a qualquer momento e gratuitamente.
+Entre eles: confirmação da existência de tratamento; acesso aos dados;
+correção de dados incompletos, inexatos ou desatualizados; anonimização,
+bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em
+desconformidade com a lei.
+
+Também constam: portabilidade dos dados a outro fornecedor de serviço ou
+produto, mediante requisição expressa, observados os segredos comercial e
+industrial; eliminação dos dados pessoais tratados com consentimento do
+titular, exceto nas hipóteses de conservação previstas em lei; informação
+sobre as entidades públicas e privadas com as quais o controlador realizou uso
+compartilhado de dados; informação sobre a possibilidade de não fornecer
+consentimento e sobre as consequências da negativa; e revogação do
+consentimento.
+
+O artigo também prevê o direito de peticionar em relação aos seus dados contra
+o controlador perante a autoridade nacional (ANPD) e o direito de se opor a
+tratamento realizado com base em hipóteses de dispensa de consentimento, em
+caso de descumprimento de dispositivos da lei.
+
+Um dos direitos mais relevantes para IA — desdobrado em detalhe no Art. 20º —
+é o direito à revisão de decisões tomadas unicamente com base em tratamento
+automatizado de dados pessoais que afetem os interesses do titular.

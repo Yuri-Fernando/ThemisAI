@@ -1,0 +1,14 @@
+{
+  "module": "self_healing_governance",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 5,
+  "tests_passed": 5,
+  "capabilities": [
+    "check_and_heal(checks, incident_log=None) -> list[HealingAction] — detecta + abre incidente real + sugere remediação declarativa",
+    "Catálogo de remediação para audit_chain_integrity, checkpoint_chain_integrity, prompt_security_coverage, regulatory_index_freshness"
+  ],
+  "notebook": "notebooks/self_healing_governance_dev_log.ipynb",
+  "notes": "Escopo honesto: detecta+registra+recomenda, NUNCA corrige dados/código sozinho (decisão de risco deliberada). Testado com integração real contra blockchain_audit_layer (cadeia adulterada de verdade -> incidente aberto).",
+  "updated_at": "2026-08-20T00:00:00"
+}

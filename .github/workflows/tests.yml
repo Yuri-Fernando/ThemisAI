@@ -1,0 +1,44 @@
+name: tests
+
+# Roda a suíte real do projeto (445 testes, core/ + apps/) a cada push e PR.
+# Sem segredos/credenciais necessários -- o motor V1/V2/V3-V4 é 100% local
+# (regras + sentence-transformers local + ChromaDB local), sem chamada a
+# nenhuma API externa paga.
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+  workflow_dispatch: {}
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Instalar dependências (core + heavy)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-core.txt
+          pip install -r requirements-heavy.txt
+
+      - name: Rodar suíte completa (core/ + apps/)
+        run: |
+          python -m pytest core/ apps/ -v --cov=core --cov=apps --cov=shared --cov-report=term-missing --cov-report=xml
+
+      - name: Publicar relatório de cobertura como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+          retention-days: 30

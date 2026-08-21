@@ -1,0 +1,15 @@
+{
+  "module": "regulatory_auto_update",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 9,
+  "tests_passed": 9,
+  "capabilities": [
+    "build_manifest(corpus_dir=None) -> CorpusManifest — snapshot com hash SHA-256 real por arquivo",
+    "diff_against_manifest(manifest, corpus_dir=None) -> CorpusDiff — detecta added/removed/modified/unchanged",
+    "save_manifest / load_manifest — persistência do manifesto"
+  ],
+  "notebook": "notebooks/regulatory_auto_update_dev_log.ipynb",
+  "notes": "Não busca atualizações do texto oficial da LGPD em fonte externa (fora de escopo, exigiria validação jurídica humana) — entrega só o pré-requisito técnico de detecção de mudança local do corpus, para reindexação consciente (regulatory_rag.build_index).",
+  "updated_at": "2026-08-20T00:00:00"
+}

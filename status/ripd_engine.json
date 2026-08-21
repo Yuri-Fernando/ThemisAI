@@ -1,0 +1,21 @@
+{
+  "module": "ripd_engine",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 10,
+  "tests_passed": 10,
+  "capabilities": [
+    "generate_ripd(project_name, project_description, data_categories, legal_basis, context=None) -> RIPDReport — primeiro módulo a COMPOR de verdade os 7 módulos da Onda 1 (nenhum mock, chamadas reais)",
+    "Escaneia a própria descrição do projeto em busca de PII vazada (pii_detection.detect)",
+    "Avalia políticas LGPD aplicáveis, incluindo DENY/REQUIRES_HUMAN_REVIEW reais (policy_engine.evaluate)",
+    "Scan opcional de prompt security via context['sample_prompt'] (prompt_security.scan)",
+    "Recupera contexto regulatório via query composta ao Regulatory RAG (regulatory_rag.query)",
+    "Fecha o ciclo de injeção de dependência trust_score -> explainability (compute_trust_score chamado duas vezes)",
+    "Agrega e deduplica mitigations de todas as PolicyDecision aplicáveis",
+    "Resumo executivo 100% determinístico em português (template + interpolação, nunca geração livre/LLM)",
+    "Registra evento AuditEventType.RIPD_GENERATED no log de auditoria real do projeto"
+  ],
+  "notebook": "notebooks/ripd_engine_dev_log.ipynb",
+  "notes": "Motor 100% determinístico e local — nenhuma chamada a LLM em nenhum ponto do pipeline. Bug de estabilidade em Windows corrigido (access violation intermitente no primeiro carregamento do sentence-transformers, causado por materialização paralela de pesos) — ver CHANGELOG.md do módulo. Nenhuma persistência do RIPDReport gerado é feita por este módulo; fica a cargo do governance_copilot.",
+  "updated_at": "2026-08-20T00:00:00"
+}

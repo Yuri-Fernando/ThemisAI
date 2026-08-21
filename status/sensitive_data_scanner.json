@@ -1,0 +1,16 @@
+{
+  "module": "sensitive_data_scanner",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 9,
+  "tests_passed": 9,
+  "capabilities": [
+    "scan_document(file_path) -> DocumentScanResult — escaneia .txt/.pdf/.docx",
+    "Extração de texto real (pypdf p/ PDF, python-docx p/ DOCX incluindo tabelas)",
+    "Reaplica pii_detection.detect() sobre o texto extraído — nenhuma lógica de PII duplicada",
+    "Sinaliza PDFs sem texto extraível (provável necessidade de OCR, não suportado)"
+  ],
+  "notebook": "notebooks/sensitive_data_scanner_dev_log.ipynb",
+  "notes": "OCR de documento escaneado (imagem) não suportado nesta versão — exigiria motor de OCR fora das dependências atuais do projeto (TODO explícito). Formatos além de txt/pdf/docx (xlsx, pptx, html, imagens) também fora de escopo.",
+  "updated_at": "2026-08-20T00:00:00"
+}

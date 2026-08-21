@@ -1,0 +1,19 @@
+{
+  "module": "pii_detection",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 25,
+  "tests_passed": 25,
+  "capabilities": [
+    "Regex determinístico e offline: CPF/CNPJ (com validação de dígito verificador)",
+    "Regex: RG (com janela de contexto), e-mail, telefone BR (com/sem DDD e +55), CEP",
+    "Regex + contexto: data de nascimento",
+    "Heurística leve de nome próprio (stopwords PT, fora de início de frase)",
+    "Classificação LGPD Art. 5º (PERSONAL/SENSITIVE) via shared/schemas.py",
+    "Detecção de dado sensível por palavra-chave, insensível a acento",
+    "Enriquecimento opcional via spaCy pt_core_news_sm (best-effort, try/except)"
+  ],
+  "notebook": "notebooks/pii_detection_dev_log.ipynb",
+  "notes": "Caminho crítico 100% offline via regex; spaCy nunca é exigido (todos os 25 testes passam sem o modelo instalado). spaCy não estava disponível no venv usado para este ciclo de dev, portanto o enriquecimento NER não foi exercitado em execução real - só o caminho regex. Detecção de dado sensível é por palavra-chave (sem análise de negação/contexto semantico) - ver limitações no notebook.",
+  "updated_at": "2026-08-19T00:45:00"
+}

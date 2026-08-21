@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.env
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+node_modules/
+*.faiss
+*.index
+htmlcov/
+.coverage
+coverage.xml
+
+# Branch pública (portfólio): rascunho/brainstorm bruto e notas de trabalho
+# pessoais não fazem parte do conteúdo público — o conteúdo relevante já
+# está condensado em ROADMAP.md/CHANGELOG.md/CASE_STUDY.md.
+rascunho.md
+docs/origin/
+PARA_VOCE_FAZER.md
+adendo.md
+.claude/

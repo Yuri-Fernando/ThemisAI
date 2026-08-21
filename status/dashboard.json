@@ -1,0 +1,18 @@
+{
+  "module": "dashboard",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 49,
+  "tests_passed": 49,
+  "capabilities": [
+    "GovernanceCopilotClient: cliente HTTP fino (httpx) para core/governance_copilot, um método por endpoint do contrato (health, pii/detect, prompt-security/scan, policy/evaluate, ripd/generate, audit/verify, audit/events)",
+    "base_url configurável via parâmetro ou env var ATHENAGOV_API_URL, com fallback para http://localhost:8000",
+    "Respostas parseadas de volta para os tipos de shared/schemas.py (PIIDetectionResult, PromptSecurityResult, PolicyDecision, RIPDReport, AuditEvent) — type-safe, sem redefinição local de contratos",
+    "Tratamento de erro dedicado (conexão/timeout vs. erro HTTP da API) para a UI nunca quebrar com o backend fora do ar",
+    "App Streamlit (apps/dashboard/app.py) com 5 seções: Visão geral (status/*.json direto do disco, sem depender da API), Gerador de RIPD, Scanner de PII, Scanner de Prompt Security, Auditoria",
+    "Lógica de negócio extraída em funções puras testáveis, desacopladas de streamlit.*"
+  ],
+  "notebook": "notebooks/dashboard_dev_log.ipynb",
+  "notes": "Construído inteiramente contra o contrato de API (HTTP via httpx), nunca por import direto de core/governance_copilot — o backend estava sendo implementado em paralelo por outro agente e não existia no disco durante este ciclo. As seções que dependem da API (RIPD, PII, Prompt Security, Auditoria) não puderam ser validadas ponta-a-ponta contra um backend real neste ciclo; foram validadas via httpx.MockTransport nos testes. A seção 'Visão geral' foi validada de verdade contra os status/*.json reais do repo. Streamlit em si não é exercitado por pytest (limitação da ferramenta, não do código) — toda lógica não-trivial das telas foi extraída para funções puras e cobertas por teste.",
+  "updated_at": "2026-08-19T14:30:00"
+}

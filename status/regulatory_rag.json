@@ -1,0 +1,16 @@
+{
+  "module": "regulatory_rag",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 14,
+  "tests_passed": 14,
+  "capabilities": [
+    "Corpus local ilustrativo da LGPD (12 arquivos, Art. 5/6/7/9/11/12/18/20/37/38/46/48, paráfrases explicitamente identificadas)",
+    "Parsing determinístico do corpus (corpus_loader.load_corpus/parse_corpus_file)",
+    "build_index(persist_dir=None) -> int — embeddings sentence-transformers (paraphrase-multilingual-MiniLM-L12-v2) + índice ChromaDB persistente (espaço de cosseno)",
+    "query(text, k=3) -> RAGQueryResult — busca semântica local com score de similaridade, validada com 4 perguntas de teste (top-3)"
+  ],
+  "notebook": "notebooks/regulatory_rag_dev_log.ipynb",
+  "notes": "14/14 testes passam (7 de parsing do corpus + 7 de indexação/busca semântica real). Modelo de embeddings baixado com sucesso no venv compartilhado do projeto (C:/Users/Yuri_/.venvs/athenagov-ai). Achado de engenharia registrado no notebook: a versão inicial rankeava mal porque todo chunk começa com a mesma frase-cabeçalho de paráfrase (quase idêntica entre os 12 arquivos), que dominava a similaridade de cosseno quando incluída no texto embedado — corrigido embedando tema+corpo-sem-disclaimer enquanto o texto completo (com disclaimer) continua sendo o que é armazenado/retornado por query(). Sem bloqueios.",
+  "updated_at": "2026-08-19T00:00:00"
+}

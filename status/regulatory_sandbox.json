@@ -1,0 +1,14 @@
+{
+  "module": "regulatory_sandbox",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "simulate(scenario) -> SandboxResult — policy_engine + trust_score reais, sem gravar em audit_logs",
+    "compare_scenarios(scenario_a, scenario_b) -> SandboxComparison — diff de score e decisões entre dois cenários what-if"
+  ],
+  "notebook": "notebooks/regulatory_sandbox_dev_log.ipynb",
+  "notes": "Ausência de efeito colateral em audit_logs verificada explicitamente em teste (contagem de eventos antes/depois idêntica). Usa PIIDetectionResult neutro fixo — não escaneia texto de projeto, só simula categorias/base legal/contexto declarados.",
+  "updated_at": "2026-08-20T00:00:00"
+}

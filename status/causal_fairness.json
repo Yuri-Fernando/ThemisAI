@@ -1,0 +1,13 @@
+{
+  "module": "causal_fairness",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 6,
+  "tests_passed": 6,
+  "capabilities": [
+    "stratified_fairness_audit(records, outcome_key, protected_attribute_key, confound_key) -> StratifiedFairnessResult — detecção de Paradoxo de Simpson"
+  ],
+  "notebook": "notebooks/causal_fairness_dev_log.ipynb",
+  "notes": "Exemplo clássico estilo Berkeley validado nos testes: agregado injusto, todos os estratos justos -- paradoxo detectado corretamente.",
+  "updated_at": "2026-08-21T00:00:00"
+}

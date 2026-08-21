@@ -1,0 +1,13 @@
+{
+  "module": "runtime_policy_enforcement",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "@enforce(agent_id, action) — decorator que bloqueia a execução da função decorada se não autorizada (multi_agent_governance.authorize real)"
+  ],
+  "notebook": "notebooks/runtime_policy_enforcement_dev_log.ipynb",
+  "notes": "Enforcement em nível de aplicação, não kernel/eBPF -- escopo honesto documentado. Teste prova que o corpo da função nunca executa se não autorizado.",
+  "updated_at": "2026-08-21T00:00:00"
+}

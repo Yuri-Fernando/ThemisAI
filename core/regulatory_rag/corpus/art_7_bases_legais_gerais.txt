@@ -1,0 +1,33 @@
+Artigo: 7º
+Tema: Bases legais gerais para tratamento de dados pessoais
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 7º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 7º lista as hipóteses (bases legais) que autorizam o tratamento de dados
+pessoais comuns — ou seja, dados que não se enquadram na categoria de "dado
+sensível" do Art. 5º/11º. Toda operação de tratamento precisa se apoiar em pelo
+menos uma dessas bases.
+
+As principais bases descritas são: consentimento do titular (manifestação
+livre, informada e inequívoca pela qual o titular concorda com o tratamento
+para uma finalidade determinada); cumprimento de obrigação legal ou regulatória
+pelo controlador; execução de políticas públicas por órgãos públicos;
+realização de estudos por órgão de pesquisa (com garantia de anonimização
+sempre que possível); execução de contrato ou de procedimentos preliminares
+relacionados a contrato do qual o titular seja parte; exercício regular de
+direitos em processo judicial, administrativo ou arbitral.
+
+Também estão previstas: proteção da vida ou da incolumidade física do titular
+ou de terceiro; tutela da saúde, em procedimento realizado por profissionais de
+saúde; atendimento a interesses legítimos do controlador ou de terceiros
+(legitimate interest), exceto quando prevalecerem direitos e liberdades
+fundamentais do titular que exijam a proteção dos dados pessoais — essa base
+exige um teste de balanceamento (legitimate interest assessment) e não se
+aplica a dados sensíveis; e proteção do crédito, inclusive quanto ao disposto
+na legislação pertinente.
+
+Para IA e automação de decisões, "consentimento" e "legítimo interesse" são as
+bases mais frequentemente invocadas, mas cada uma tem exigências e limites
+diferentes — por isso a base legal escolhida deve constar explicitamente na
+documentação de governança do projeto (ex.: na RIPD).

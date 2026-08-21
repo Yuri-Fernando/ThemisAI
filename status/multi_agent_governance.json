@@ -1,0 +1,15 @@
+{
+  "module": "multi_agent_governance",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "authorize(agent_id, action) -> AuthorizationResult",
+    "list_agents() -> list[AgentRole]",
+    "5 agentes declarados em agents.yaml (ripd_generator, auditor, red_teamer, reviewer, sandbox_explorer)"
+  ],
+  "notebook": "notebooks/multi_agent_governance_dev_log.ipynb",
+  "notes": "Checagem declarativa explícita, não interceptor real via reflexão/decorators. TODO onda futura: integração automática.",
+  "updated_at": "2026-08-20T00:00:00"
+}

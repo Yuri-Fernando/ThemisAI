@@ -1,0 +1,16 @@
+{
+  "module": "differential_privacy",
+  "version": "0.2.0",
+  "status": "done",
+  "tests_total": 19,
+  "tests_passed": 19,
+  "capabilities": [
+    "laplace_mechanism(true_value, sensitivity, epsilon, seed=None) -> DPQueryResult — ruído real (numpy.random.laplace)",
+    "private_count / private_mean (com clipping)",
+    "PrivacyBudget — rastreia gasto de epsilon, recusa estouro",
+    "advanced_composition_epsilon(epsilon_per_query, k, delta) -> float — teorema de composição avançada real (Dwork, Rothblum, Vadhan 2010)"
+  ],
+  "notebook": "notebooks/differential_privacy_dev_log.ipynb",
+  "notes": "Mecanismo de Laplace real (Dwork et al.), não simulado. V5 item 11 (2026-08-21): composição avançada real adicionada, cresce O(sqrt(k)) vs O(k) da soma simples.",
+  "updated_at": "2026-08-21T00:00:00"
+}

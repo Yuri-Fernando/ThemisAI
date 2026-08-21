@@ -1,0 +1,14 @@
+{
+  "module": "federated_governance",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 8,
+  "tests_passed": 8,
+  "capabilities": [
+    "build_node_report(node_id, trust_scores) -> NodeReport — só o agregado sai do nó",
+    "aggregate_federation(node_reports) -> FederatedSummary — média ponderada, sem centralizar dado bruto"
+  ],
+  "notebook": "notebooks/federated_governance_dev_log.ipynb",
+  "notes": "Testado com NodeReport construído a partir de TrustScoreResult real (policy_engine + trust_score reais). Padrão real de governança federada entre unidades com jurisdições/bases legais diferentes.",
+  "updated_at": "2026-08-20T00:00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "module": "policy_engine",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 25,
+  "tests_passed": 25,
+  "capabilities": [
+    "9 políticas declarativas de LGPD para IA em policies.yaml (saúde, biométrico, menor de idade, transferência internacional, dado anonimizado, decisão automatizada com efeito jurídico/Art. 20, finalidade não especificada, base legal não determinada, baseline allow)",
+    "engine.evaluate(data_categories, legal_basis, context=None, policies_path=None) -> list[PolicyDecision], suportando múltiplas decisões simultâneas para o mesmo cenário",
+    "Branching real por outcome (ordem de regras) dentro de cada política, não apenas match categoria -> resultado fixo",
+    "Cobertura dos 4 status de PolicyDecisionStatus (allow, allow_with_mitigation, deny, requires_human_review) e do caso de borda 'nenhuma política aplicável'"
+  ],
+  "notebook": "notebooks/policy_engine_dev_log.ipynb",
+  "notes": "Sem chamadas externas; motor 100% declarativo (YAML) e determinístico, sem aprendizado. Não faz agregação/priorização entre PolicyDecision concorrentes (delegado ao governance_copilot) — ver TODOs em CHANGELOG.md e no Handoff Summary do notebook.",
+  "updated_at": "2026-08-19T13:23:22"
+}

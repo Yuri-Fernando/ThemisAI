@@ -1,0 +1,13 @@
+{
+  "module": "constitution_compiler",
+  "version": "0.2.0",
+  "status": "done",
+  "tests_total": 11,
+  "tests_passed": 11,
+  "capabilities": [
+    "compile_constitution(articles) -> ConstitutionCompileResult — detecção estática de conflitos (duplicate_condition, subsumption, overlapping_condition_different_severity, vacuous_overlap_different_severity)"
+  ],
+  "notebook": "notebooks/constitution_compiler_dev_log.ipynb",
+  "notes": "V5 item 2 (2026-08-21): distingue overlap real (chave em comum, bloqueante) de overlap por vacuidade (sem chave em comum, informativo). Constituição de produção: 11 falsos-positivos da v0.1.0 viraram 2 conflitos bloqueantes reais (CONST-01/CONST-03, CONST-05/CONST-06) + 9 informativos.",
+  "updated_at": "2026-08-21T00:00:00"
+}

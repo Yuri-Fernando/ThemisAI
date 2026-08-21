@@ -1,0 +1,17 @@
+{
+  "module": "audit_logs",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 6,
+  "tests_passed": 6,
+  "capabilities": [
+    "Hash-chain local imutável (SHA-256 encadeado) para eventos de auditoria",
+    "AuditLogger.record_event() com persistência append-only em .jsonl",
+    "AuditLogger.verify_chain() para detecção de adulteração da cadeia",
+    "AuditLogger.read_events() para leitura auxiliar de todos os eventos",
+    "default_logger() de conveniência para uso por outros módulos"
+  ],
+  "notebook": "notebooks/audit_logs_dev_log.ipynb",
+  "notes": "Sem chamadas externas; log persistido em core/audit_logs/data/audit_log.jsonl. Bug de hash/timestamp (Pydantic serializa datetime com sufixo Z, quebrando a verificação de uma cadeia intacta) encontrado e corrigido durante o desenvolvimento -- ver CHANGELOG.md.",
+  "updated_at": "2026-08-19T00:00:00"
+}

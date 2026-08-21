@@ -1,0 +1,32 @@
+Artigo: 38º
+Tema: Relatório de Impacto à Proteção de Dados Pessoais (RIPD)
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 38º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 38º trata do Relatório de Impacto à Proteção de Dados Pessoais (RIPD),
+por vezes chamado internacionalmente de DPIA (Data Protection Impact
+Assessment). A autoridade nacional (ANPD) pode determinar ao controlador que
+elabore um RIPD, inclusive quanto a dados de natureza pública, referente às
+suas operações de tratamento de dados, nos termos de regulamento — observados
+os segredos comercial e industrial.
+
+De forma geral, um RIPD deve conter, no mínimo: a descrição dos tipos de dados
+coletados, a metodologia utilizada para a coleta e para a garantia da
+segurança das informações, e a análise do controlador com relação a medidas,
+salvaguardas e mecanismos de mitigação de risco adotados. Em outras palavras,
+é um documento estruturado que demonstra que o controlador avaliou os riscos
+do tratamento antes (ou durante) de colocá-lo em produção, e não apenas depois
+de um incidente.
+
+Embora o artigo trate especificamente do poder da ANPD de exigir o relatório,
+a boa prática de mercado (e a que este projeto adota) é que o RIPD seja
+elaborado proativamente para qualquer sistema que processe dado pessoal
+sensível ou tome decisões automatizadas relevantes (ver Art. 11º e Art. 20º),
+antes do deploy — reduzindo o risco de sanções e servindo como evidência de
+governança.
+
+Este é exatamente o documento que o módulo RIPD Engine deste sistema gera
+automaticamente, combinando os achados de PII Detection, Policy Engine, Prompt
+Security e Trust Score com o contexto regulatório recuperado por este módulo
+(Regulatory RAG).

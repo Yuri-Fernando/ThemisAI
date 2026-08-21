@@ -1,0 +1,16 @@
+{
+  "module": "regulatory_knowledge_graph",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 12,
+  "tests_passed": 12,
+  "capabilities": [
+    "build_graph(corpus_dir=None) -> networkx.DiGraph — grafo real dos 12 artigos do corpus, arestas extraídas por regex de menções textuais reais (não fabricadas)",
+    "to_result(graph) -> RegulatoryKnowledgeGraphResult",
+    "find_related(graph, article_number, max_hops=1) -> list[dict] — BFS não-direcionado",
+    "shortest_path(graph, from_article, to_article) -> list[str] | None"
+  ],
+  "notebook": "notebooks/regulatory_knowledge_graph_dev_log.ipynb",
+  "notes": "Consolida GraphRAG + Regulatory Knowledge Graph do ROADMAP original (mesma capacidade). Hoje 10 arestas reais entre 12 artigos — a riqueza do grafo é limitada pela riqueza do corpus atual, não fabricada artificialmente. GraphRAG completo (híbrido grafo+embeddings) é TODO de onda futura.",
+  "updated_at": "2026-08-20T00:00:00"
+}

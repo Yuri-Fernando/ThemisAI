@@ -1,0 +1,30 @@
+Artigo: 12º
+Tema: Dados anonimizados e limites da anonimização
+Fonte: LGPD (Lei 13.709/2018)
+
+# Resumo ilustrativo do Art. 12º da LGPD (Lei 13.709/2018) — paráfrase para fins de demonstração técnica, não substitui consulta ao texto oficial (planalto.gov.br).
+
+O Art. 12º trata do tratamento de dados anonimizados, complementando a
+definição de anonimização do Art. 5º. A regra geral é que dados anonimizados
+não são considerados dados pessoais para os fins da lei, salvo quando o
+processo de anonimização ao qual foram submetidos for revertido, utilizando
+exclusivamente meios próprios, ou quando, com esforços razoáveis, puder ser
+revertido.
+
+O artigo reconhece que, na avaliação do que seria "esforço razoável", devem ser
+levados em consideração fatores objetivos como custo e tempo necessários para
+reverter o processo de anonimização, de acordo com as tecnologias disponíveis,
+e a utilização exclusiva de meios próprios. Ou seja: um dado "anonimizado" de
+forma frágil, que pode ser reidentificado com técnicas de re-identificação
+conhecidas (cruzamento com outras bases, por exemplo), pode voltar a ser
+tratado como dado pessoal.
+
+Também é previsto que dados anonimizados podem, em certas hipóteses, ser
+considerados dados pessoais quando utilizados para formação de perfil
+comportamental de determinada pessoa natural, caso essa pessoa seja
+identificada.
+
+Para pipelines de IA, esse artigo é relevante quando datasets de treinamento
+são divulgados como "anonimizados": a robustez técnica da anonimização (e não
+apenas a remoção de campos óbvios como nome/CPF) determina se a LGPD continua
+ou não se aplicando ao dado.

@@ -1,0 +1,14 @@
+{
+  "module": "traceability",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 7,
+  "tests_passed": 7,
+  "capabilities": [
+    "trace_events(events, correlation_key, correlation_value) -> TraceLink",
+    "trace_by_correlation_key(correlation_key, logger=None) -> list[TraceLink] — um trace por valor distinto encontrado na cadeia real de auditoria"
+  ],
+  "notebook": "notebooks/traceability_dev_log.ipynb",
+  "notes": "Correlação por chave de payload já existente (ex. project_name), não um trace_id distribuído estilo OpenTelemetry — não há propagação de contexto automática entre módulos nesta versão. TODO de onda futura: gravação automática de trace_id pelo ripd_engine/governance_copilot.",
+  "updated_at": "2026-08-20T00:00:00"
+}

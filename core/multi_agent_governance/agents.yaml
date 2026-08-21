@@ -1,0 +1,53 @@
+# Registro declarativo de agentes do Themis AI e as ações que cada um pode
+# executar. "Ação" aqui é um identificador lógico (não uma função Python
+# amarrada por reflexão) — quem chama `authorize()` decide o que fazer com o
+# resultado (permitir ou bloquear a chamada real).
+
+agents:
+  - agent_id: "ripd_generator"
+    name: "Gerador de RIPD"
+    allowed_actions:
+      - "pii_detection.detect"
+      - "policy_engine.evaluate"
+      - "prompt_security.scan"
+      - "regulatory_rag.query"
+      - "trust_score.compute"
+      - "explainability.explain"
+      - "audit_logs.record_event"
+      - "ripd_engine.generate_ripd"
+      - "governance_copilot.ripd_store"
+    risk_tier: medium
+
+  - agent_id: "auditor"
+    name: "Agente de Auditoria"
+    allowed_actions:
+      - "audit_logs.verify_chain"
+      - "audit_logs.read_events"
+      - "blockchain_audit_layer.create_checkpoint"
+      - "blockchain_audit_layer.verify_checkpoint_chain"
+      - "traceability.trace_by_correlation_key"
+      - "ai_observability.export"
+      - "self_healing_governance.check_and_heal"
+    risk_tier: low
+
+  - agent_id: "red_teamer"
+    name: "Agente de Red Team"
+    allowed_actions:
+      - "red_team_lab.run_suite"
+      - "prompt_security.scan"
+    risk_tier: high
+
+  - agent_id: "reviewer"
+    name: "Agente de Revisão Humana (interface)"
+    allowed_actions:
+      - "human_oversight.enqueue"
+      - "human_oversight.decide"
+      - "human_oversight.list_items"
+    risk_tier: low
+
+  - agent_id: "sandbox_explorer"
+    name: "Agente de Simulação"
+    allowed_actions:
+      - "regulatory_sandbox.simulate"
+      - "regulatory_sandbox.compare_scenarios"
+    risk_tier: low

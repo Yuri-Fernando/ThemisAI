@@ -1,0 +1,267 @@
+# policies.yaml — base de políticas do Policy Engine (Themis AI)
+#
+# Cada política é avaliada contra os parâmetros de entrada de `engine.evaluate()`:
+#   - data_categories: list[DataCategory]  (shared/schemas.py) -> valores "personal",
+#     "sensitive", "anonymized", "not_personal"
+#   - legal_basis: LegalBasis -> "consent", "legitimate_interest", "legal_obligation",
+#     "contract_execution", "research", "not_determined"
+#   - context: dict livre, usado para sinalizar circunstâncias operacionais que a LGPD
+#     trata de forma diferenciada. Chaves de contexto reconhecidas por este arquivo:
+#       data_subtype: str            # "health" | "biometric" | "genetic" | "financial" | ...
+#       involves_minor: bool
+#       guardian_consent: bool       # consentimento específico e em destaque do responsável (Art. 14)
+#       international_transfer: bool
+#       adequacy_safeguard: bool     # cláusula-padrão/decisão de adequação/BCR (Art. 33)
+#       automated_decision: bool
+#       legal_effect: bool           # decisão automatizada produz efeito jurídico/relevante sobre o titular
+#       human_review: bool           # existe revisão humana efetiva da decisão
+#       explainability_available: bool
+#       purpose_specified: bool | (ausente = não informado; false = explicitamente não especificada)
+#       ripd_conducted: bool         # Relatório de Impacto à Proteção de Dados Pessoais realizado
+#
+# Estrutura de cada política:
+#   id, description: identificação e texto legível
+#   trigger: condições que tornam a política RELEVANTE para o cenário avaliado
+#     - data_categories_any / data_categories_all / data_categories_none: listas de DataCategory
+#     - legal_basis_in / legal_basis_not_in: listas de LegalBasis
+#     - context: dict de igualdade (todas as chaves devem bater)
+#     - context_ne: dict de desigualdade (nenhuma chave pode bater)
+#   outcomes: lista ORDENADA de resultados possíveis. O primeiro `when` que casar decide o
+#     status final. Um outcome sem `when` funciona como default (deve ser o último da lista).
+#     Se a política tem trigger casado mas nenhum outcome casa, ela é ignorada (sem decisão)
+#     — trata-se de uma configuração intencionalmente incompleta, nunca de invenção de resultado.
+
+policies:
+  - id: POL-001
+    description: >
+      Dado de saúde (categoria sensível, Art. 5º, II) exige consentimento explícito do
+      titular e Relatório de Impacto à Proteção de Dados Pessoais (RIPD) antes do uso em IA.
+    trigger:
+      data_categories_any: [sensitive]
+      context:
+        data_subtype: health
+    outcomes:
+      - when:
+          legal_basis_in: [consent]
+          context:
+            ripd_conducted: true
+        status: allow_with_mitigation
+        risk_level: high
+        rationale: >
+          Dado de saúde processado com consentimento explícito e RIPD concluído.
+          Uso permitido sob controles reforçados (Art. 11, I combinado com Art. 38 LGPD).
+        mitigations:
+          - "Restringir acesso ao dado de saúde por controle de papéis (RBAC)"
+          - "Manter o RIPD atualizado a cada mudança relevante de finalidade"
+          - "Auditoria trimestral do uso do dado de saúde pelo sistema de IA"
+      - status: requires_human_review
+        risk_level: critical
+        rationale: >
+          Dado de saúde sem consentimento explícito registrado e/ou sem RIPD concluído.
+          Art. 11, I e Art. 38 da LGPD exigem consentimento específico e destacado e RIPD
+          para tratamento de dado sensível em larga escala — revisão humana obrigatória
+          antes de prosseguir.
+        mitigations:
+          - "Obter consentimento explícito e destacado do titular (Art. 11, I)"
+          - "Elaborar o RIPD antes de iniciar o processamento (Art. 38)"
+
+  - id: POL-002
+    description: >
+      Dado biométrico (categoria sensível de alto risco) exige, no mínimo, revisão humana;
+      uso em decisão totalmente automatizada sem revisão humana é vedado.
+    trigger:
+      data_categories_any: [sensitive]
+      context:
+        data_subtype: biometric
+    outcomes:
+      - when:
+          context:
+            automated_decision: true
+          context_ne:
+            human_review: true
+        status: deny
+        risk_level: critical
+        rationale: >
+          Dado biométrico usado em decisão totalmente automatizada sem qualquer revisão
+          humana. Risco inaceitável dado o potencial de discriminação e irreversibilidade
+          do dado biométrico (Art. 5º, II e Art. 20 LGPD).
+        mitigations: []
+      - when:
+          context:
+            human_review: true
+        status: allow_with_mitigation
+        risk_level: high
+        rationale: >
+          Dado biométrico com revisão humana efetiva no fluxo de decisão. Uso permitido
+          sob controles reforçados de segurança e minimização.
+        mitigations:
+          - "Criptografia dedicada e segregação de armazenamento do template biométrico"
+          - "Registrar toda consulta ao dado biométrico em log de auditoria imutável"
+      - status: requires_human_review
+        risk_level: high
+        rationale: >
+          Dado biométrico presente sem confirmação de revisão humana no fluxo. Por ser
+          dado sensível de alto risco, requer avaliação humana antes de prosseguir.
+        mitigations:
+          - "Designar responsável humano para validar o uso do dado biométrico"
+
+  - id: POL-003
+    description: >
+      Dado de menor de idade exige consentimento específico e em destaque dado por ao
+      menos um dos pais ou responsável legal (Art. 14 LGPD).
+    trigger:
+      context:
+        involves_minor: true
+    outcomes:
+      - when:
+          context:
+            guardian_consent: true
+        status: allow_with_mitigation
+        risk_level: high
+        rationale: >
+          Consentimento específico e em destaque do responsável legal registrado (Art. 14,
+          §1º). Uso permitido sob controles adicionais de minimização de dados de menor.
+        mitigations:
+          - "Minimizar a coleta ao estritamente necessário para a finalidade (Art. 14, §2º)"
+          - "Revisão periódica (a cada 6 meses) da vigência do consentimento do responsável"
+      - status: deny
+        risk_level: critical
+        rationale: >
+          Dado de menor de idade sem consentimento específico e em destaque do responsável
+          legal registrado. Tratamento vedado pelo Art. 14 da LGPD nessas condições.
+        mitigations:
+          - "Obter consentimento específico e em destaque de um dos pais ou responsável legal"
+
+  - id: POL-004
+    description: >
+      Transferência internacional de dado pessoal sem salvaguarda de adequação exige
+      revisão humana antes de prosseguir (Art. 33 LGPD).
+    trigger:
+      context:
+        international_transfer: true
+    outcomes:
+      - when:
+          context:
+            adequacy_safeguard: true
+        status: allow_with_mitigation
+        risk_level: medium
+        rationale: >
+          Transferência internacional amparada por decisão de adequação, cláusulas-padrão
+          contratuais ou normas corporativas globais (Art. 33, I e II).
+        mitigations:
+          - "Manter registro da base de transferência internacional utilizada"
+          - "Revisar a validade da salvaguarda de adequação a cada 12 meses"
+      - status: requires_human_review
+        risk_level: high
+        rationale: >
+          Transferência internacional identificada sem salvaguarda de adequação
+          registrada. Art. 33 LGPD exige base específica para transferência internacional
+          — revisão humana obrigatória antes de autorizar.
+        mitigations:
+          - "Verificar hipótese aplicável do Art. 33 (adequação, cláusulas-padrão, consentimento específico)"
+
+  - id: POL-005
+    description: >
+      Dado anonimizado, nos termos do Art. 12 da LGPD, não é considerado dado pessoal e
+      é liberado para uso, sujeito à reavaliação periódica da irreversibilidade da técnica.
+    trigger:
+      data_categories_all: [anonymized]
+      data_categories_none: [personal, sensitive]
+    outcomes:
+      - status: allow
+        risk_level: low
+        rationale: >
+          Somente dado anonimizado presente (Art. 12 LGPD). Fora do escopo de dado
+          pessoal para fins de aplicação da lei, desde que a anonimização seja irreversível.
+        mitigations: []
+
+  - id: POL-006
+    description: >
+      Decisão totalmente automatizada com efeito jurídico ou impacto relevante sobre o
+      titular exige explicabilidade e possibilidade de revisão humana (Art. 20 LGPD).
+    trigger:
+      context:
+        automated_decision: true
+        legal_effect: true
+    outcomes:
+      - when:
+          context:
+            explainability_available: true
+            human_review: true
+        status: allow_with_mitigation
+        risk_level: medium
+        rationale: >
+          Decisão automatizada com efeito jurídico, explicabilidade disponível e via de
+          revisão humana implementada — atende ao direito de revisão do Art. 20 LGPD.
+        mitigations:
+          - "Disponibilizar a explicação da decisão ao titular mediante solicitação (Art. 20, §1º)"
+      - when:
+          context:
+            explainability_available: true
+        status: requires_human_review
+        risk_level: high
+        rationale: >
+          Explicabilidade disponível, mas sem via de revisão humana confirmada. Art. 20
+          exige que o titular possa solicitar revisão da decisão automatizada.
+        mitigations:
+          - "Implementar canal de solicitação de revisão humana da decisão"
+      - status: deny
+        risk_level: critical
+        rationale: >
+          Decisão totalmente automatizada com efeito jurídico sobre o titular, sem
+          explicabilidade disponível. Viola o direito de explicação e revisão do Art. 20
+          LGPD — uso vedado nessas condições.
+        mitigations:
+          - "Implementar mecanismo de explicabilidade antes de liberar a decisão automatizada"
+
+  - id: POL-007
+    description: >
+      Tratamento de dado pessoal ou sensível sem finalidade específica e explícita é
+      vedado (Art. 6º, I e Art. 9º, I LGPD).
+    trigger:
+      data_categories_any: [personal, sensitive]
+      context:
+        purpose_specified: false
+    outcomes:
+      - status: deny
+        risk_level: high
+        rationale: >
+          Finalidade do tratamento não especificada. Art. 6º, I exige finalidade
+          determinada, explícita e informada ao titular — tratamento vedado sem isso.
+        mitigations:
+          - "Definir e documentar a finalidade específica do tratamento antes de prosseguir"
+
+  - id: POL-008
+    description: >
+      Dado pessoal ou sensível processado sem base legal determinada exige revisão
+      humana antes de prosseguir (Art. 7º/11º LGPD).
+    trigger:
+      data_categories_any: [personal, sensitive]
+      legal_basis_in: [not_determined]
+    outcomes:
+      - status: requires_human_review
+        risk_level: medium
+        rationale: >
+          Base legal do tratamento ainda não determinada. Todo tratamento de dado
+          pessoal requer enquadramento em uma das hipóteses do Art. 7º (ou Art. 11º para
+          dado sensível) — revisão humana necessária para definir a base aplicável.
+        mitigations:
+          - "Enquadrar o tratamento em uma base legal do Art. 7º/11º antes de prosseguir"
+
+  - id: POL-009
+    description: >
+      Dado pessoal comum (não sensível), com base legal determinada e finalidade
+      especificada, é liberado para uso — política de linha de base (baseline allow).
+    trigger:
+      data_categories_any: [personal]
+      data_categories_none: [sensitive]
+      legal_basis_not_in: [not_determined]
+      context_ne:
+        purpose_specified: false
+    outcomes:
+      - status: allow
+        risk_level: low
+        rationale: >
+          Dado pessoal comum, com base legal determinada (Art. 7º) e finalidade
+          especificada (Art. 6º, I). Nenhuma circunstância agravante identificada.
+        mitigations: []

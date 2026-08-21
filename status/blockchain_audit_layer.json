@@ -1,0 +1,16 @@
+{
+  "module": "blockchain_audit_layer",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 13,
+  "tests_passed": 13,
+  "capabilities": [
+    "merkle_root(leaves) -> str — árvore de Merkle SHA-256 determinística",
+    "create_checkpoint(logger=None, checkpoint_path=None) -> MerkleCheckpoint — agrupa eventos novos do audit_logs num checkpoint encadeado (hash-chain própria)",
+    "get_proof(event_hash, ...) -> MerkleProof — prova de inclusão O(log n) para qualquer evento já coberto por um checkpoint",
+    "verify_checkpoint_chain(checkpoint_path=None) -> bool — detecta adulteração da cadeia de checkpoints"
+  ],
+  "notebook": "notebooks/blockchain_audit_layer_dev_log.ipynb",
+  "notes": "Evolução honesta do audit_logs: reduz mas não elimina a limitação já documentada (atacante com escrita+verificação pode recalcular tudo). O merkle_root de cada checkpoint é o dado que seria publicado externamente para virar âncora real — nenhuma integração externa implementada nesta versão (TODO).",
+  "updated_at": "2026-08-20T00:00:00"
+}
