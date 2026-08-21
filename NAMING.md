@@ -22,23 +22,13 @@ formal, e mais. O nome "AthenaGov" (sabedoria + governo) não comunicava mais
 o centro de gravidade real do projeto, que é **governança e justiça
 algorítmica**, não só estratégia.
 
-## Pedido do usuário
-
-> "e cria um nome que reflita a todas essas capacidades"
-
-Seguido de confirmação de que era para renomear o projeto inteiro (não só
-apelidar um subconjunto de módulos).
-
 ## Opções consideradas
 
-Apresentadas via pergunta direta ao usuário, com recomendação e trade-offs
-explícitos:
 
 | Opção | Racional | Trade-off |
 |---|---|---|
 | **Themis AI** (escolhida) | Têmis é a deusa grega da lei, da ordem e da justiça divina — mantém a mesma linha mitológica grega de "Athena" (sabedoria/estratégia), mas migra o significado para governança/justiça, que é exatamente o que o projeto virou. Curto, pronunciável, fácil de virar domínio/pacote (`themis-ai`). | Menos "óbvio" para quem não conhece a mitologia grega — exige uma linha explicando a origem (este documento existe por isso). |
 | Aegis Governance | Aegis = escudo protetor (também mitologia grega, ligado a Athena/Zeus). Comunica proteção/defesa — encaixaria bem com `audit_logs`, `blockchain_audit_layer`, `red_team_lab`, `incident_response`. | Lê mais como "plataforma de segurança" do que "plataforma de compliance/governança" — sub-representa `fairness_audit`, `constitutional_ai`, `regulatory_rag`, que são o núcleo real do projeto. |
-| Nenhum dos dois / outras opções | Oferecido como terceira via, caso nenhuma das duas conversasse com a visão do usuário. | Não escolhido — o usuário confirmou "Themis AI" na primeira rodada. |
 
 ## Decisão
 
