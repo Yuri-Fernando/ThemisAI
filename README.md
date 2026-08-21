@@ -23,6 +23,14 @@ inteiramente como peça de portfólio, para demonstrar competências reais de
 engenharia de governança de IA (compliance, fairness, segurança,
 privacidade diferencial, verificação formal).
 
+> **Sobre o nome:** o projeto começou como "AthenaGov AI" e foi renomeado
+> para **Themis AI** quando o escopo já cobria compliance LGPD, fairness,
+> segurança, privacidade diferencial e verificação formal — Têmis, deusa
+> grega da lei, da ordem e da justiça, comunica melhor "governança e
+> justiça algorítmica" do que o nome original, mantendo a mesma linha
+> mitológica grega (Athena → Têmis). Discussão completa (opções
+> consideradas, critérios de decisão, execução) em [NAMING.md](NAMING.md).
+
 ---
 
 ## 🎯 Objetivo
