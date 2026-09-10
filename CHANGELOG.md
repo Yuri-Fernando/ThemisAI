@@ -11,6 +11,30 @@ Ver também: [ROADMAP.md](ROADMAP.md) (escopo/fases) e `docs/decisions/` (ADRs).
 
 ## [Unreleased]
 
+### Added — V6: Adversarial ML / AI Security (2026-09-10)
+
+- **`core/adversarial_ml/`** — novo módulo (SemVer local `0.1.0`). Motor de
+  segurança de modelos de decisão automatizada:
+  - `attacks/`: FGSM, PGD, model extraction (surrogate por consulta),
+    data poisoning (label flip). Ataques reais — gradiente analítico no
+    modelo logístico numpy, diferenças finitas no `BlackBoxModel`.
+  - `defenses/`: adversarial training (min-max de Madry), feature squeezing
+    + clipping, detector estatístico de entrada adversarial.
+  - `robustness/`: curva ε×acurácia, `min_perturbation_budget`,
+    `classify_risk`, e o **MODEL SECURITY REPORT** renderizado.
+  - `llm_security/`: fachada compondo `prompt_security` + `red_team_lab`
+    (motor real) numa seção do relatório.
+  - `assessment.run_security_assessment(...)` — ponto de entrada único →
+    `ModelSecurityReport`.
+- **`shared/schemas.py`**: `SCHEMA_VERSION` 0.3.0 → 0.4.0 (aditivo). Novos
+  contratos: `AdversarialAttackResult`, `RobustnessMetrics`,
+  `DefenseEvaluation`, `ModelSecurityReport`.
+- **15 testes** novos (`core/adversarial_ml/tests/`), sem simulação.
+- `notebooks/adversarial_ml_dev_log.ipynb`.
+- `ROADMAP.md`: seção **V6** — escopo vindo do brainstorm de consolidação de
+  portfólio (`up.txt`); Themis passa a ser plataforma central de
+  **AI Governance + AI Security + Adversarial ML**.
+
 ### Pendente (reservado para o usuário — Fase 2, ver PARA_VOCE_FAZER.md e ROADMAP.md)
 - Demo pública (Dockerfile/docker-compose já prontos, build não validado
   nesta sessão — Docker Desktop indisponível no ambiente).

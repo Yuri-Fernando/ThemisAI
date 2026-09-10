@@ -15,7 +15,7 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
-SCHEMA_VERSION = "0.3.0"
+SCHEMA_VERSION = "0.4.0"
 
 
 # ---------------------------------------------------------------------------
@@ -671,3 +671,58 @@ class RegulatoryChangeImpact(BaseModel):
     scenarios_with_score_change: int
     comparisons: list[SandboxComparison]
     summary: str
+
+
+# ---------------------------------------------------------------------------
+# V4 (extração real) — Adversarial ML / AI Security
+# ---------------------------------------------------------------------------
+
+class AdversarialAttackResult(BaseModel):
+    """Resultado real de um ataque adversarial executado contra um modelo.
+
+    `attack` é o nome do ataque (fgsm, pgd, extraction, poisoning). As
+    acurácias são medidas sobre o mesmo conjunto de avaliação — `clean` sem
+    perturbação, `adversarial` com a perturbação do ataque aplicada.
+    """
+    attack: str
+    epsilon: float | None = None
+    clean_accuracy: float
+    adversarial_accuracy: float
+    accuracy_drop: float
+    success_rate: float
+    samples_evaluated: int
+    extra: dict[str, Any] = Field(default_factory=dict)
+
+
+class RobustnessMetrics(BaseModel):
+    """Métricas agregadas de robustez de um modelo sob ataque."""
+    clean_accuracy: float
+    robust_accuracy: float
+    min_perturbation_budget: float | None = None
+    robustness_curve: list[dict[str, float]] = Field(default_factory=list)
+    risk_level: RiskLevel
+
+
+class DefenseEvaluation(BaseModel):
+    """Comparação antes/depois de aplicar uma defesa (ex.: adversarial training)."""
+    defense: str
+    robust_accuracy_before: float
+    robust_accuracy_after: float
+    clean_accuracy_before: float
+    clean_accuracy_after: float
+    summary: str
+
+
+class ModelSecurityReport(BaseModel):
+    """Relatório consolidado de segurança de um modelo — o `MODEL SECURITY
+    REPORT` textual é derivado deste objeto por `robustness/report.py`.
+    """
+    model_name: str
+    clean_accuracy: float
+    attacks: list[AdversarialAttackResult]
+    robustness: RobustnessMetrics
+    defenses: list[DefenseEvaluation] = Field(default_factory=list)
+    llm_security: dict[str, Any] = Field(default_factory=dict)
+    overall_risk: RiskLevel
+    recommendations: list[str] = Field(default_factory=list)
+    rendered_report: str = ""

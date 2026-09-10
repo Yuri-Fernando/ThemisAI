@@ -78,6 +78,17 @@ RIPD Engine (compõe os módulos acima em um relatório único)
 Governance Copilot (API FastAPI: auth, autorização real, métricas, auditoria)
    ↓
 Dashboard (Streamlit) / integração externa
+
+Entrada (modelo de decisão automatizada + dados de teste)
+   ↓
+Adversarial ML  (core/adversarial_ml/)
+   ├─ ataques: FGSM · PGD · model extraction · data poisoning
+   ├─ defesas: adversarial training · feature squeezing · detecção
+   └─ robustez: curva ε×acurácia · min. perturbation budget · risco
+   ↓
+MODEL SECURITY REPORT  (+ seção de LLM security via prompt_security/red_team_lab)
+   ↓
+gate de MLOps (ex.: production robustness gate do Argus)
 ```
 
 Cada camada é um módulo independente (`core/<modulo>/`), com contrato
@@ -230,6 +241,18 @@ encontrados por red-teaming e análise estática.
 **Fase 5 — Publicação** 🔄 Em andamento
 Deploy público (Docker pronto, build ainda não validado em produção), tag
 de release, revisão jurídica do corpus regulatório.
+
+**Fase 6 — Adversarial ML / AI Security** ✅ Núcleo implementado
+`core/adversarial_ml/` — motor de segurança de modelos: ataques adversariais
+reais (FGSM, PGD, model extraction, data poisoning), defesas (adversarial
+training, feature squeezing, detecção estatística) e o **MODEL SECURITY
+REPORT** consolidado (`run_security_assessment`). Escopo vindo de um
+brainstorm de consolidação de portfólio — Themis passa a ser a plataforma
+central de **AI Governance + AI Security + Adversarial ML**, e os demais
+projetos (VisionGuard, Credit Score, RL-PID-AGV, Churn) são os casos de uso
+que consomem este motor. 15 testes. Ver
+[`core/adversarial_ml/CHANGELOG.md`](core/adversarial_ml/CHANGELOG.md) e
+`notebooks/adversarial_ml_dev_log.ipynb`.
 
 ---
 

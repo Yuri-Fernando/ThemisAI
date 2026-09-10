@@ -209,18 +209,33 @@ fonte externa de LGPD exige validação jurídica antes de automatizar).
 **32 testes novos nesta rodada.** Total do projeto: **477 testes passando**
 (`pytest core/ apps/`).
 
-## Teto do projeto — não há V6/V7 de capacidade nova
+## V6 — Adversarial ML / AI Security (2026-09)
 
-Confirmado explicitamente (a pedido do usuário, registrado em `WORKLOG.md`
-2026-08-21): **V1 + V2 + V3/V4 (extração real) + V5 é o teto do escopo
-técnico do projeto.** As 41 capacidades rastreadas cobrem 100% do brainstorm
-original (`docs/origin/rascunho.md`); os itens que faltam em V3/V4/V5 são
-deliberadamente não-implementados (design ou decisão de risco), não dívida
-esquecida. Inventar uma "V6" de capacidades novas violaria o próprio
-princípio que sustentou o rigor do projeto até aqui — o que resta depois
-disto é polimento (portfólio, deploy) e, se necessário, fechar os 4 itens
-ainda em aberto do próprio V5 — nunca mais capacidade nova sem vir de um
-achado real.
+Adicionada a partir de um brainstorm de consolidação de portfólio (`up.txt`),
+por decisão explícita do dono do projeto — não é "capacidade inventada": vem
+de um documento de estratégia que redefiniu o Themis como plataforma central
+de **AI Governance + AI Security + Adversarial ML**, com os demais projetos
+do portfólio como casos de uso.
+
+| # | Capacidade | Pasta | Status |
+|---|-----------|-------|--------|
+| 42 | Adversarial ML — ataques (FGSM, PGD, extraction, poisoning) | `core/adversarial_ml/attacks/` | ✅ done (15 testes no módulo) |
+| 43 | Defesas (adversarial training, feature squeezing, detecção) | `core/adversarial_ml/defenses/` | ✅ done |
+| 44 | Robustez (curva ε×acc, min. perturbation budget, risco) + MODEL SECURITY REPORT | `core/adversarial_ml/robustness/` | ✅ done |
+| 45 | LLM security assessment (fachada sobre `prompt_security` + `red_team_lab`) | `core/adversarial_ml/llm_security/` | ✅ done |
+
+Mesmo rigor do resto: código real + testes + notebook de dev-log, sem
+simulação (acurácias limpa/adversarial vêm de avaliação real do modelo).
+
+## Teto atual — sem V7 de capacidade nova sem novo brainstorm
+
+**V1 + V2 + V3/V4 + V5 + V6 é o teto do escopo técnico do projeto.** As 45
+capacidades rastreadas cobrem 100% do brainstorm original
+(`docs/origin/rascunho.md`) mais a extensão de Adversarial ML do `up.txt`.
+Itens que faltam em V3/V4/V5 continuam deliberadamente não-implementados
+(design ou decisão de risco), não dívida esquecida. Uma "V7" só entra a
+partir de um novo documento de estratégia explícito — nunca capacidade nova
+sem vir de um achado real ou de decisão registrada do dono do projeto.
 
 ## Convenção de versionamento
 
