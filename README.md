@@ -290,6 +290,24 @@ desenvolvimento, não concluído.
 
 ---
 
+## 🔗 Projetos que consomem o Themis
+
+O Themis é a **plataforma central de AI Governance + AI Security + Adversarial
+ML** de um portfólio. O motor de `core/adversarial_ml/`
+(`run_security_assessment` → `ModelSecurityReport`) é consumido pelos casos
+de uso abaixo, e o relatório alimenta o *production robustness gate* do
+**Argus** (`ml-platform/adversarial-evaluation/`).
+
+| Projeto | O que ataca/testa | Técnica |
+|---|---|---|
+| **VisionGuard** | classificador ResNet de visão | FGSM · PGD · adversarial patch · adversarial training |
+| **Credit Score (AWS)** | modelo de risco de crédito (tabular) | evasão de perturbação mínima sob *feature constraints* · model extraction |
+| **Self-Evolving RL-PID-AGV** | política de controle sob observação corrompida | ataques de estado (ruído/bias/dropout/latência/spoofing) · robust RL |
+| **Churn Intelligence** | modelo de churn (tabular, negócio) | robustness testing (perturbação · missing-data · distribution shift · OOD) |
+| **Argus** | qualquer modelo antes de produção | gate de MLOps: bloqueia promoção se `overall_risk` / `robust_accuracy` fora do limite |
+
+---
+
 ## 🤖 Autor
 
 **Yuri Fernando Dubbern**
