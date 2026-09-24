@@ -15,7 +15,7 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
-SCHEMA_VERSION = "0.4.0"
+SCHEMA_VERSION = "0.5.0"
 
 
 # ---------------------------------------------------------------------------
@@ -726,3 +726,129 @@ class ModelSecurityReport(BaseModel):
     overall_risk: RiskLevel
     recommendations: list[str] = Field(default_factory=list)
     rendered_report: str = ""
+
+
+# ---------------------------------------------------------------------------
+# V7 — Legal Change Intelligence (detecção e análise de alteração normativa)
+# ---------------------------------------------------------------------------
+
+class LegalUnitType(str, Enum):
+    """Unidades estruturais de um texto normativo brasileiro (LC 95/1998, art. 10)."""
+    ARTICLE = "article"      # Art. 10 (caput)
+    PARAGRAPH = "paragraph"  # § 1º / Parágrafo único
+    INCISO = "inciso"        # I, II, III...
+    ALINEA = "alinea"        # a), b), c)...
+    ITEM = "item"            # 1., 2., 3. (dentro de alínea)
+
+
+class LegalUnit(BaseModel):
+    """Um dispositivo normativo endereçável (ex. `art-20.par-1.inc-II`).
+
+    `text` é o texto limpo (sem anotações editoriais do Planalto como
+    "(Redação dada pela Lei nº ...)"); as anotações ficam em `annotations` e
+    os atos alteradores extraídos delas em `amended_by`.
+    """
+    unit_id: str
+    unit_type: LegalUnitType
+    article: str
+    paragraph: str | None = None
+    inciso: str | None = None
+    alinea: str | None = None
+    item: str | None = None
+    heading_path: list[str] = Field(default_factory=list)
+    text: str
+    annotations: list[str] = Field(default_factory=list)
+    amended_by: list[str] = Field(default_factory=list)
+    revoked: bool = False
+    vetoed: bool = False
+
+
+class LegalChangeType(str, Enum):
+    ADDED = "added"
+    REMOVED = "removed"
+    MODIFIED = "modified"
+    REVOKED = "revoked"
+    ANNOTATION_ONLY = "annotation_only"
+
+
+class LegalSignal(BaseModel):
+    """Sinal determinístico de materialidade jurídica detectado numa alteração."""
+    signal_id: str
+    description: str
+    weight: float = Field(ge=0.0, le=1.0)
+    evidence: str
+
+
+class LegalUnitChange(BaseModel):
+    unit_id: str
+    article: str
+    unit_type: LegalUnitType
+    change_type: LegalChangeType
+    before: str | None = None
+    after: str | None = None
+    textual_change_score: float = Field(ge=0.0, le=1.0)
+    signals: list[LegalSignal] = Field(default_factory=list)
+    amended_by: list[str] = Field(default_factory=list)
+
+
+class ClientDocument(BaseModel):
+    doc_id: str
+    title: str
+    text: str = ""
+    cited_units: list[str] = Field(default_factory=list)  # ex. ["art-20", "art-20.par-1"]
+
+
+class ClientContext(BaseModel):
+    """Contexto de um cliente do escritório — usado para mapear quem pode ser
+    afetado por uma alteração. Nunca sai do processo (sem chamada externa)."""
+    client_id: str
+    name: str
+    topics: list[str] = Field(default_factory=list)
+    watched_norms: list[str] = Field(default_factory=list)
+    documents: list[ClientDocument] = Field(default_factory=list)
+
+
+class RelatedClient(BaseModel):
+    client_id: str
+    name: str
+    strength: str  # "strong" (cita dispositivo alterado) | "weak" (só afinidade temática)
+    matched_units: list[str] = Field(default_factory=list)
+    related_documents: list[str] = Field(default_factory=list)
+    reasons: list[str] = Field(default_factory=list)
+
+
+class LegalImpactLevel(str, Enum):
+    NONE = "none"
+    INFORMATIONAL = "informational"
+    REVIEW_RECOMMENDED = "review_recommended"
+    REVIEW_REQUIRED = "review_required"
+
+
+class LegalRuleFiring(BaseModel):
+    rule_id: str
+    description: str
+    evidence: list[str] = Field(default_factory=list)
+
+
+class LegalChangeAnalysis(BaseModel):
+    """Saída de `analyze_legal_change` — decisão 100% determinística
+    (regras), auditável e reproduzível. Nenhum LLM decide `impact_level`."""
+    engine_version: str
+    document: dict[str, Any] = Field(default_factory=dict)
+    previous_hash: str
+    current_hash: str
+    units_before: int
+    units_after: int
+    parse_coverage_before: float = Field(ge=0.0, le=1.0)
+    parse_coverage_after: float = Field(ge=0.0, le=1.0)
+    changes: list[LegalUnitChange] = Field(default_factory=list)
+    affected_topics: list[str] = Field(default_factory=list)
+    related_clients: list[RelatedClient] = Field(default_factory=list)
+    impact_level: LegalImpactLevel
+    risk_level: RiskLevel
+    requires_human_review: bool
+    rules_fired: list[LegalRuleFiring] = Field(default_factory=list)
+    confidence: float = Field(ge=0.0, le=1.0)
+    oversight_item_id: str | None = None
+    summary: str
+    analyzed_at: datetime

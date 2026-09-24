@@ -1,0 +1,21 @@
+{
+  "name": "exposicao_combinada",
+  "description": "Mesma alteração material do caso 02 (prazo + multa), mas agora um parecer do cliente cita o Art. 10 — exposição combinada, risco crítico.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 10. O fornecedor deverá comunicar o incidente de segurança à autoridade competente no prazo de 30 (trinta) dias, sob pena de multa de 2% do faturamento.",
+  "current": "Art. 10. O fornecedor deverá comunicar o incidente de segurança à autoridade competente no prazo de 15 (quinze) dias, sob pena de multa de 10% do faturamento.",
+  "client_context": [
+    {"client_id": "fintech-alfa", "name": "Fintech Alfa", "topics": [], "watched_norms": ["lei-99999-2026"],
+     "documents": [{"doc_id": "plano-incidentes", "title": "Plano de resposta a incidentes", "text": "O prazo de comunicação segue o art. 10 da lei.", "cited_units": []}]}
+  ],
+  "expected": {
+    "changes": {"art-10": "modified"},
+    "signals_include": {"art-10": ["DEADLINE_CHANGED", "PENALTY_OR_AMOUNT_CHANGED"]},
+    "impact_level": "review_required",
+    "risk_level": "critical",
+    "requires_human_review": true,
+    "rules_include": ["R2_MATERIAL_SIGNAL", "R3_STRONG_CLIENT_LINK", "R4_COMBINED_EXPOSURE"],
+    "topics_include": [],
+    "related_clients": {"fintech-alfa": "strong"}
+  }
+}

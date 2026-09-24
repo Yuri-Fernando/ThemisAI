@@ -1,0 +1,19 @@
+{
+  "name": "so_anotacao",
+  "description": "Texto idêntico; só surge a anotação '(Redação dada pela Lei ...)' — o Planalto faz isso quando a nova lei repete a redação. Informativo, sem revisão.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 3º Esta Lei aplica-se a qualquer operação de tratamento realizada no território nacional.",
+  "current": "Art. 3º Esta Lei aplica-se a qualquer operação de tratamento realizada no território nacional. (Redação dada pela Lei nº 99.997, de 2026)",
+  "client_context": [],
+  "expected": {
+    "changes": {"art-3": "annotation_only"},
+    "signals_include": {},
+    "amended_by_include": {"art-3": ["Lei 99.997/2026"]},
+    "impact_level": "informational",
+    "risk_level": "low",
+    "requires_human_review": false,
+    "rules_include": ["R8_MINOR_CHANGE"],
+    "topics_include": [],
+    "related_clients": {}
+  }
+}

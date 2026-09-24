@@ -227,15 +227,25 @@ do portfólio como casos de uso.
 Mesmo rigor do resto: código real + testes + notebook de dev-log, sem
 simulação (acurácias limpa/adversarial vêm de avaliação real do modelo).
 
-## Teto atual — sem V7 de capacidade nova sem novo brainstorm
+## V7 — Legal Change Intelligence (2026-09)
 
-**V1 + V2 + V3/V4 + V5 + V6 é o teto do escopo técnico do projeto.** As 45
-capacidades rastreadas cobrem 100% do brainstorm original
-(`docs/origin/rascunho.md`) mais a extensão de Adversarial ML do `up.txt`.
-Itens que faltam em V3/V4/V5 continuam deliberadamente não-implementados
-(design ou decisão de risco), não dívida esquecida. Uma "V7" só entra a
-partir de um novo documento de estratégia explícito — nunca capacidade nova
-sem vir de um achado real ou de decisão registrada do dono do projeto.
+Entrou pela regra do antigo "teto" (V7 só com novo documento de estratégia
+explícito): o brainstorm "upgrade 2" (vertical jurídica do Conecta AI) +
+pedido registrado do dono do projeto. Decisão em
+[`docs/decisions/0002-legal-change-intelligence.md`](docs/decisions/0002-legal-change-intelligence.md).
+
+| # | Capacidade | Pasta | Status |
+|---|-----------|-------|--------|
+| 46 | Legal Change Intelligence — parser estrutural de norma, diff por dispositivo, sinais de materialidade, mapeamento de clientes, regras de impacto R0–R8, integração com `human_oversight` | `core/legal_change_intelligence/` | ✅ done (31 testes no módulo) |
+
+Consumidor: **Conecta AI** (aba Direito, super admin) — mesma lógica em
+TypeScript na edge do SaaS, amarrada a este módulo pelas fixtures JSON
+compartilhadas (`core/legal_change_intelligence/fixtures/cases/`).
+
+## Teto atual
+
+**V1…V7 é o teto do escopo técnico.** Mesma regra de antes: uma V8 só entra
+a partir de novo documento de estratégia explícito ou de achado real.
 
 ## Convenção de versionamento
 

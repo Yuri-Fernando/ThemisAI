@@ -1,0 +1,19 @@
+{
+  "name": "prazo_e_multa",
+  "description": "Sintético (lei fictícia 99.999/2026): prazo de comunicação cai de 30 para 15 dias e multa sobe de 2% para 10% — os dois sinais materiais mais comuns em alteração que gera trabalho para escritório.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "CAPÍTULO I\nDA COMUNICAÇÃO DE INCIDENTES\nArt. 10. O fornecedor deverá comunicar o incidente de segurança à autoridade competente no prazo de 30 (trinta) dias, sob pena de multa de 2% do faturamento.\nParágrafo único. A comunicação conterá a descrição dos dados afetados.",
+  "current": "CAPÍTULO I\nDA COMUNICAÇÃO DE INCIDENTES\nArt. 10. O fornecedor deverá comunicar o incidente de segurança à autoridade competente no prazo de 15 (quinze) dias, sob pena de multa de 10% do faturamento. (Redação dada pela Lei nº 99.998, de 2026)\nParágrafo único. A comunicação conterá a descrição dos dados afetados.",
+  "client_context": [],
+  "expected": {
+    "changes": {"art-10": "modified"},
+    "signals_include": {"art-10": ["DEADLINE_CHANGED", "PENALTY_OR_AMOUNT_CHANGED"]},
+    "amended_by_include": {"art-10": ["Lei 99.998/2026"]},
+    "impact_level": "review_required",
+    "risk_level": "high",
+    "requires_human_review": true,
+    "rules_include": ["R2_MATERIAL_SIGNAL"],
+    "topics_include": [],
+    "related_clients": {}
+  }
+}

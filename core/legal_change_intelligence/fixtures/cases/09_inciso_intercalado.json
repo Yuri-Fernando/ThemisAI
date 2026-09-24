@@ -1,0 +1,18 @@
+{
+  "name": "inciso_intercalado",
+  "description": "Técnica legislativa real (LC 95/1998, art. 12, III, b): inciso novo entra como 'I-A' para não renumerar os seguintes. O diff por dispositivo deve acusar SÓ o inciso novo — um diff de linhas veria tudo abaixo deslocado.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 2º Para os fins desta Lei, considera-se:\nI - incidente: evento adverso confirmado;\nII - fornecedor: pessoa jurídica que trata dados;\nIII - autoridade: órgão fiscalizador.",
+  "current": "Art. 2º Para os fins desta Lei, considera-se:\nI - incidente: evento adverso confirmado;\nI-A - quase-incidente: evento adverso contido antes de afetar dados; (Incluído pela Lei nº 99.998, de 2026)\nII - fornecedor: pessoa jurídica que trata dados;\nIII - autoridade: órgão fiscalizador.",
+  "client_context": [],
+  "expected": {
+    "changes": {"art-2.inc-I-A": "added"},
+    "signals_include": {"art-2.inc-I-A": ["NEW_PROVISION"]},
+    "impact_level": "review_recommended",
+    "risk_level": "medium",
+    "requires_human_review": false,
+    "rules_include": ["R5_MATERIAL_TEXT_CHANGE", "R6_NEW_AMENDING_ACT"],
+    "topics_include": [],
+    "related_clients": {}
+  }
+}

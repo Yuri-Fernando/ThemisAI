@@ -1,0 +1,20 @@
+{
+  "name": "lgpd_art20_revisao_humana",
+  "description": "Caso REAL: LGPD Art. 20. A redação original (Lei 13.709/2018) garantia revisão 'por pessoa natural'; a MP 869/2018, convertida na Lei 13.853/2019, retirou a expressão, e o § 3º incluído pela conversão foi vetado. Texto atual copiado do compilado do Planalto (com as anotações editoriais).",
+  "metadata": {"norm_id": "lei-13709-2018", "title": "LGPD", "aliases": ["LGPD", "13.709", "Lei Geral de Proteção de Dados"]},
+  "previous": "Art. 20. O titular dos dados tem direito a solicitar revisão, por pessoa natural, de decisões tomadas unicamente com base em tratamento automatizado de dados pessoais que afetem seus interesses, inclusive de decisões destinadas a definir o seu perfil pessoal, profissional, de consumo e de crédito ou os aspectos de sua personalidade.\n§ 1º O controlador deverá fornecer, sempre que solicitadas, informações claras e adequadas a respeito dos critérios e dos procedimentos utilizados para a decisão automatizada, observados os segredos comercial e industrial.\n§ 2º Em caso de não oferecimento de informações de que trata o § 1º deste artigo baseado na observância de segredo comercial e industrial, a autoridade nacional poderá realizar auditoria para verificação de aspectos discriminatórios em tratamento automatizado de dados pessoais.",
+  "current": "Art. 20. O titular dos dados tem direito a solicitar a revisão de decisões tomadas unicamente com base em tratamento automatizado de dados pessoais que afetem seus interesses, incluídas as decisões destinadas a definir o seu perfil pessoal, profissional, de consumo e de crédito ou os aspectos de sua personalidade. (Redação dada pela Lei nº 13.853, de 2019) Vigência\n§ 1º O controlador deverá fornecer, sempre que solicitadas, informações claras e adequadas a respeito dos critérios e dos procedimentos utilizados para a decisão automatizada, observados os segredos comercial e industrial.\n§ 2º Em caso de não oferecimento de informações de que trata o § 1º deste artigo baseado na observância de segredo comercial e industrial, a autoridade nacional poderá realizar auditoria para verificação de aspectos discriminatórios em tratamento automatizado de dados pessoais.\n§ 3º (VETADO). (Incluído pela Lei nº 13.853, de 2019) Vigência",
+  "client_context": [],
+  "expected": {
+    "changes": {"art-20": "modified", "art-20.par-3": "added"},
+    "signals_include": {"art-20": ["HUMAN_REVIEW_SAFEGUARD_CHANGED"]},
+    "amended_by_include": {"art-20": ["Lei 13.853/2019"]},
+    "vetoed_after": ["art-20.par-3"],
+    "impact_level": "review_required",
+    "risk_level": "high",
+    "requires_human_review": true,
+    "rules_include": ["R2_MATERIAL_SIGNAL", "R6_NEW_AMENDING_ACT"],
+    "topics_include": ["protecao_de_dados"],
+    "related_clients": {}
+  }
+}

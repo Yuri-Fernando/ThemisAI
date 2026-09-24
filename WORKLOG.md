@@ -5,6 +5,27 @@ orientado a release/versão). Aqui o registro é cronológico e operacional:
 o que foi feito, o que ficou pendente, e por quê — para retomar contexto
 rápido numa sessão futura sem precisar reler todo o histórico de commits.
 
+## 2026-09-23 — V7: Legal Change Intelligence
+
+### Contexto
+Brainstorm "upgrade 2" (vaga de Engenheiro(a) de IA jurídica) propôs o Themis
+como cérebro regulatório de uma vertical jurídica do Conecta AI, com a função
+`analyze_legal_change`. Implementada neste repo (Python, referência) e portada
+para TypeScript no Conecta AI (`Direito/core`), com fixtures compartilhadas.
+
+### Feito
+- Módulo `core/legal_change_intelligence/` + contratos (schema 0.5.0) + 31
+  testes + ADR 0002 + ROADMAP V7.
+- Parser validado contra 12 normas reais baixadas do Planalto. Três armadilhas
+  reais do HTML encontradas e tratadas: redação revogada tachada ainda no
+  HTML (CLT tem ~4 mil `<strike>`), marcador "Art." separado do número por
+  quebra de linha do código-fonte (CF Art. 41), e numeração reiniciada no
+  ADCT (índice no topo também contém o título — só ativa o namespace depois
+  do primeiro artigo).
+
+### Pendente
+- Notebook de dev-log do módulo (padrão do projeto; não feito nesta sessão).
+
 ## 2026-08-20 — Sessão de recuperação + V2 completo + extração V3/V4
 
 ### Contexto inicial

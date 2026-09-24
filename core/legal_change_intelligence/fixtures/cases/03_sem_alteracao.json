@@ -1,0 +1,18 @@
+{
+  "name": "sem_alteracao",
+  "description": "Mesmo texto nas duas versões, só com espaços/quebras diferentes — não pode gerar alteração.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 1º Esta Lei dispõe sobre comunicação de incidentes.\nArt. 2º Para os fins desta Lei, considera-se:\nI - incidente: evento adverso;\nII - fornecedor: pessoa jurídica que trata dados.",
+  "current": "Art. 1º  Esta Lei dispõe sobre   comunicação de incidentes.\n\nArt. 2º Para os fins desta Lei, considera-se:\nI - incidente:\nevento adverso;\nII - fornecedor: pessoa jurídica que trata dados.",
+  "client_context": [],
+  "expected": {
+    "changes": {},
+    "signals_include": {},
+    "impact_level": "none",
+    "risk_level": "low",
+    "requires_human_review": false,
+    "rules_include": ["R0_NO_CHANGE"],
+    "topics_include": [],
+    "related_clients": {}
+  }
+}

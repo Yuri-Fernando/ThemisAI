@@ -1,0 +1,18 @@
+{
+  "name": "revogacao",
+  "description": "Um parágrafo que dispensava a comunicação é revogado — mudança de alto impacto mesmo com pouco texto.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 10. O fornecedor deverá comunicar o incidente de segurança à autoridade competente.\n§ 1º A comunicação conterá a descrição dos dados afetados.\n§ 2º Fica dispensada a comunicação quando os dados estiverem anonimizados.",
+  "current": "Art. 10. O fornecedor deverá comunicar o incidente de segurança à autoridade competente.\n§ 1º A comunicação conterá a descrição dos dados afetados.\n§ 2º (Revogado pela Lei nº 99.998, de 2026)",
+  "client_context": [],
+  "expected": {
+    "changes": {"art-10.par-2": "revoked"},
+    "signals_include": {"art-10.par-2": ["REVOCATION"]},
+    "impact_level": "review_required",
+    "risk_level": "high",
+    "requires_human_review": true,
+    "rules_include": ["R1_REVOCATION"],
+    "topics_include": [],
+    "related_clients": {}
+  }
+}

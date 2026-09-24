@@ -1,0 +1,25 @@
+{
+  "name": "cliente_cita_dispositivo",
+  "description": "Alteração pequena, sem sinal material, mas um contrato do cliente ACME cita exatamente o Art. 5º desta lei — vira revisão obrigatória por exposição direta. O cliente Beta só tem afinidade temática (vínculo fraco). O cliente Gama cita 'art. 5º' de OUTRA lei e não pode casar.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 5º O relatório de conformidade será enviado anualmente ao conselho de administração.",
+  "current": "Art. 5º O relatório de conformidade será enviado anualmente ao conselho de administração e ao comitê de auditoria.",
+  "client_context": [
+    {"client_id": "acme", "name": "ACME S.A.", "topics": ["empresarial_societario"], "watched_norms": [],
+     "documents": [{"doc_id": "contrato-acme-2026", "title": "Contrato de prestação de serviços ACME", "text": "Cláusula 7. A CONTRATADA enviará o relatório de conformidade previsto no art. 5º da Lei 99.999/2026."}]},
+    {"client_id": "beta", "name": "Beta Participações", "topics": ["empresarial_societario"], "watched_norms": [], "documents": []},
+    {"client_id": "gama", "name": "Gama Varejo", "topics": ["consumidor"], "watched_norms": [],
+     "documents": [{"doc_id": "parecer-gama", "title": "Parecer CDC", "text": "Nos termos do art. 5º do Código de Defesa do Consumidor, a política nacional..."}]}
+  ],
+  "expected": {
+    "changes": {"art-5": "modified"},
+    "signals_include": {},
+    "impact_level": "review_required",
+    "risk_level": "medium",
+    "requires_human_review": true,
+    "rules_include": ["R3_STRONG_CLIENT_LINK", "R7_WEAK_CLIENT_LINK"],
+    "rules_exclude": ["R2_MATERIAL_SIGNAL", "R4_COMBINED_EXPOSURE"],
+    "topics_include": ["empresarial_societario"],
+    "related_clients": {"acme": "strong", "beta": "weak"}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "module": "legal_change_intelligence",
+  "version": "0.1.0",
+  "status": "done",
+  "tests_total": 31,
+  "tests_passed": 31,
+  "capabilities": [
+    "parse_legal_text_with_coverage(text) -> (list[LegalUnit], coverage) — parser estrutural art/§/inciso/alínea/item + anotações do Planalto",
+    "html_to_legal_text(html) — adaptador do HTML compilado do Planalto (remove redação tachada)",
+    "structural_diff(before, after) -> list[LegalUnitChange] — diff por dispositivo",
+    "detect_signals(change) — prazo, pena/valor, obrigação, polaridade, escopo, revisão humana, revogação",
+    "match_clients(...) — vínculo strong (documento cita dispositivo alterado) / weak (tema ou norma monitorada)",
+    "assess_impact(...) — regras R0–R8, determinístico",
+    "analyze_legal_change(previous, current, metadata, client_context, oversight_queue) -> LegalChangeAnalysis"
+  ],
+  "notebook": null,
+  "notes": "Motor 100% determinístico, sem LLM na decisão. Casos de referência em fixtures/cases/ compartilhados com a implementação TypeScript do Conecta AI (Direito/core). Sem notebook de dev-log nesta versão: a validação contra 12 normas reais do Planalto está registrada no CHANGELOG do módulo.",
+  "updated_at": "2026-09-23T00:00:00"
+}

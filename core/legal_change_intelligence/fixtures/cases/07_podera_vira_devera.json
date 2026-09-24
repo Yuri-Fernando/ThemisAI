@@ -1,0 +1,19 @@
+{
+  "name": "podera_vira_devera",
+  "description": "Faculdade vira obrigação ('poderá' → 'deverá') — uma palavra de diferença, score textual baixo, mas mudança jurídica máxima.",
+  "metadata": {"norm_id": "lei-99999-2026", "title": "Lei 99.999/2026", "aliases": ["99.999"]},
+  "previous": "Art. 41. O controlador poderá indicar encarregado pelo tratamento de dados pessoais.",
+  "current": "Art. 41. O controlador deverá indicar encarregado pelo tratamento de dados pessoais.",
+  "client_context": [],
+  "expected": {
+    "changes": {"art-41": "modified"},
+    "signals_include": {"art-41": ["OBLIGATION_STRENGTHENED"]},
+    "impact_level": "review_required",
+    "risk_level": "high",
+    "requires_human_review": true,
+    "rules_include": ["R2_MATERIAL_SIGNAL"],
+    "rules_exclude": ["R5_MATERIAL_TEXT_CHANGE"],
+    "topics_include": ["protecao_de_dados"],
+    "related_clients": {}
+  }
+}

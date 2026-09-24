@@ -4,7 +4,7 @@
 
 ## Status
 
-🟡 **Em desenvolvimento — núcleo completo e testado localmente (477 testes),
+🟡 **Em desenvolvimento — núcleo completo e testado localmente (523 testes),
 deploy público ainda pendente.**
 
 ## Descrição / Contexto
@@ -178,7 +178,7 @@ numpy · networkx
 
 ## 📊 Resultados
 
-- **477 testes automatizados** passando, zero mock em módulo de produção;
+- **523 testes automatizados** passando, zero mock em módulo de produção;
 - **96% de cobertura de linha**;
 - **41 capacidades de governança de IA** implementadas com código real e
   testes, cada uma com seu próprio changelog documentando decisões e
@@ -254,6 +254,17 @@ que consomem este motor. 15 testes. Ver
 [`core/adversarial_ml/CHANGELOG.md`](core/adversarial_ml/CHANGELOG.md) e
 `notebooks/adversarial_ml_dev_log.ipynb`.
 
+**Fase 7 — Legal Change Intelligence** ✅ Núcleo implementado
+`core/legal_change_intelligence/` — `analyze_legal_change(previous, current,
+metadata, client_context)`: parser estrutural de norma brasileira
+(art/§/inciso/alínea, anotações do Planalto), diff por dispositivo, sinais
+determinísticos de materialidade (prazo, pena, obrigação, polaridade,
+revisão humana), mapeamento de clientes afetados e regras de impacto R0–R8
+com evidência — revisão obrigatória vira item real na `OversightQueue`.
+Validado contra 12 normas oficiais (CF, CC, CPC, CLT, LGPD...). Consumido
+pelo **Conecta AI** (vertical jurídica). 31 testes. Ver
+[`core/legal_change_intelligence/CHANGELOG.md`](core/legal_change_intelligence/CHANGELOG.md).
+
 ---
 
 ## 🔮 Próximos Passos
@@ -305,6 +316,12 @@ de uso abaixo, e o relatório alimenta o *production robustness gate* do
 | **Self-Evolving RL-PID-AGV** | política de controle sob observação corrompida | ataques de estado (ruído/bias/dropout/latência/spoofing) · robust RL |
 | **Churn Intelligence** | modelo de churn (tabular, negócio) | robustness testing (perturbação · missing-data · distribution shift · OOD) |
 | **Argus** | qualquer modelo antes de produção | gate de MLOps: bloqueia promoção se `overall_risk` / `robust_accuracy` fora do limite |
+
+### Vertical jurídica — Legal Change Intelligence
+
+| Projeto | O que consome | Como |
+|---|---|---|
+| **Conecta AI** (SaaS) | `core/legal_change_intelligence` | Porte TypeScript do motor na edge (Supabase) da aba **Direito**: radar de alterações da legislação oficial ingerida (Planalto) + RAG jurídico com citação validada. Contrato de comportamento = fixtures JSON compartilhadas. |
 
 ---
 

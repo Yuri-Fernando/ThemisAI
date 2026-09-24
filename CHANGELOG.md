@@ -11,6 +11,28 @@ Ver também: [ROADMAP.md](ROADMAP.md) (escopo/fases) e `docs/decisions/` (ADRs).
 
 ## [Unreleased]
 
+### Added — V7: Legal Change Intelligence (2026-09-23)
+
+- **`core/legal_change_intelligence/`** — novo módulo (SemVer local `0.1.0`).
+  `analyze_legal_change(previous_text, current_text, metadata=None,
+  client_context=None, oversight_queue=None) -> LegalChangeAnalysis`:
+  - `structure.py`: parser estrutural de norma brasileira + anotações do
+    Planalto (`amended_by`, vetado, revogado), namespace `adct.`;
+  - `source.py`: HTML compilado do Planalto → texto (remove redação tachada);
+  - `diff.py`: diff por dispositivo + score textual;
+  - `signals.py`: sinais de materialidade com evidência + 13 temas;
+  - `impact.py`: clientes afetados (strong/weak) + regras R0–R8;
+  - revisão obrigatória → item real na `human_oversight.OversightQueue`.
+- **`shared/schemas.py`**: `SCHEMA_VERSION` 0.4.0 → 0.5.0 (aditivo). Novos
+  contratos: `LegalUnitType`, `LegalUnit`, `LegalChangeType`, `LegalSignal`,
+  `LegalUnitChange`, `ClientDocument`, `ClientContext`, `RelatedClient`,
+  `LegalImpactLevel`, `LegalRuleFiring`, `LegalChangeAnalysis`.
+- **31 testes** novos; 9 casos de referência em
+  `core/legal_change_intelligence/fixtures/cases/` (1 real — LGPD Art. 20 —
+  e 8 sintéticos), compartilhados com o porte TypeScript do Conecta AI.
+- `docs/decisions/0002-legal-change-intelligence.md` (ADR) e seção **V7** no
+  `ROADMAP.md`.
+
 ### Added — V6: Adversarial ML / AI Security (2026-09-10)
 
 - **`core/adversarial_ml/`** — novo módulo (SemVer local `0.1.0`). Motor de
