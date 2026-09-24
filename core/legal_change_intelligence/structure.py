@@ -63,7 +63,7 @@ _ANNOTATION_RE = re.compile(
 )
 _TRAILING_NOISE_RE = re.compile(r"(?:\s*\b(?:Vig[êe]ncia(?:\s+encerrada)?|Mensagem\s+de\s+veto|Texto\s+compilado)\b\s*)+$", re.IGNORECASE)
 _AMENDING_ACT_RE = re.compile(
-    r"(Lei\s+Complementar|Lei|Decreto-Lei|Decreto|Medida\s+Provis[óo]ria|Emenda\s+Constitucional(?:\s+de\s+Revis[ãa]o)?)"
+    r"(Lei\s+Complementar|Lcp|Lei|Decreto-Lei|Decreto|Medida\s+Provis[óo]ria|Emenda\s+Constitucional(?:\s+de\s+Revis[ãa]o)?)"
     r"\s*n?[º°o]?\.?\s*([\d\.]+(?:-\d+)?)(?:\s*,\s*de\s*(?:\d{1,2}[º°]?\.?\s+de\s+\w+\s+de\s+)?(\d{4}))?",
     re.IGNORECASE,
 )
@@ -98,6 +98,8 @@ def extract_amending_acts(annotations: list[str]) -> list[str]:
     for note in annotations:
         for m in _AMENDING_ACT_RE.finditer(note):
             kind = normalize_whitespace(m.group(1)).title()
+            if kind == "Lcp":  # abreviação usada no compilado do CTN
+                kind = "Lei Complementar"
             number = m.group(2).rstrip(".")
             act = f"{kind} {number}" + (f"/{m.group(3)}" if m.group(3) else "")
             if act not in acts:

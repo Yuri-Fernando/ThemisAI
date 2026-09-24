@@ -82,6 +82,8 @@ def test_annotations_and_amending_acts():
     assert extract_amending_acts(notes) == ["Emenda Constitucional 115/2022"]
     assert extract_amending_acts(["(Incluído pela Medida Provisória nº 869, de 2018)"]) == ["Medida Provisória 869/2018"]
     assert extract_amending_acts(["(Redação dada pela Lei Complementar nº 104, de 10.1.2001)"]) == ["Lei Complementar 104"]
+    # Abreviação real do compilado do CTN — achada pela verificação de paridade com o porte TS.
+    assert extract_amending_acts(["(Redação dada pela Lcp nº 104, de 2001)"]) == ["Lei Complementar 104/2001"]
 
 
 def test_revoked_unit():

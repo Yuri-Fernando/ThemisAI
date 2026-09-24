@@ -3,6 +3,19 @@
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 Este módulo segue SemVer independente (`core/legal_change_intelligence/`).
 
+## [0.1.1] - 2026-09-23
+
+### Fixed
+
+- `extract_amending_acts` não reconhecia a abreviação **"Lcp"** (Lei
+  Complementar) usada nas anotações do compilado do CTN — "(Redação dada pela
+  Lcp nº 104, de 2001)" não gerava `amended_by`. Achado pela verificação de
+  paridade Python × TypeScript do Conecta AI
+  (`Direito/scripts/parity-with-themis.mjs`), que roda as duas implementações
+  sobre o HTML real de 12 normas e compara dispositivo a dispositivo
+  (19.796 dispositivos idênticos após a correção). Teste de regressão
+  adicionado.
+
 ## [0.1.0] - 2026-09-23
 
 ### Added
