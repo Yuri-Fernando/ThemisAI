@@ -111,3 +111,29 @@ def test_decode_planalto_bytes_falls_back_to_cp1252():
     raw = "Art. 1º Proteção".encode("cp1252")
     assert decode_planalto_bytes(raw) == "Art. 1º Proteção"
     assert decode_planalto_bytes("ção".encode("utf-8")) == "ção"
+
+
+def test_html_adapter_normalizes_spaced_article_marker():
+    # Leis antigas do Planalto (7.357 Cheque, 5.474 Duplicatas) escrevem "Art . 1º".
+    markup = "<p>Art . 1º O cheque contém:</p><p>I - a denominação.</p><p>Art . 2º Segundo.</p>"
+    text = html_to_legal_text(markup)
+    assert text.splitlines()[0] == "Art. 1º O cheque contém:"
+    assert _ids(text) == ["art-1", "art-1.inc-I", "art-2"]
+
+
+def test_html_adapter_removes_nul_characters():
+    # A Lei 11.340 tinha U+0000 no HTML; o Postgres recusa em colunas text.
+    assert html_to_legal_text("<p>Art. 1º Texto\x00 limpo.</p>") == "Art. 1º Texto limpo."
+
+
+def test_html_adapter_restores_miscoded_quotes_around_amendment_text():
+    # Lei 11.340 art. 42: U+001C/U+001D no lugar de “ ” em volta do artigo de outra
+    # lei que ela altera — o "Art. 313" citado não pode virar artigo da própria lei.
+    markup = (
+        "<p>Art. 42. O art. 313 do CPP passa a vigorar acrescido do seguinte inciso IV:</p>"
+        "<p>\x1c Art. 313. ....</p><p>IV - se o crime envolver violência doméstica.\x1d (NR)</p>"
+        "<p>Art. 43. Seguinte.</p>"
+    )
+    text = html_to_legal_text(markup)
+    assert "\x1c" not in text and "“ Art. 313." in text
+    assert "art-313" not in _ids(text)

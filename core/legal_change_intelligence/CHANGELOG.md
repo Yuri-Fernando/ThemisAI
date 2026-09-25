@@ -3,6 +3,25 @@
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 Este módulo segue SemVer independente (`core/legal_change_intelligence/`).
 
+## [0.1.2] - 2026-09-25
+
+### Fixed
+
+- `html_to_legal_text` — três casos do HTML real do Planalto, achados ao ampliar
+  a base do Conecta AI de 12 para 102 normas:
+  - **"Art . 1º"** (espaço antes do ponto, em leis antigas como a 7.357 Cheque e a
+    5.474 Duplicatas) não era reconhecido como artigo — a Lei do Cheque saía com 0
+    dispositivos. Normalizado para "Art." no começo da linha.
+  - **U+0000** (NUL) no HTML da Lei 11.340 — removido (o Postgres recusa em `text`).
+  - **U+001C / U+001D** na Lei 11.340 são aspas curvas mal codificadas em volta do
+    texto que ela insere em outras leis ("acrescido do seguinte inciso IV: “Art.
+    313...”"). O `\s` do Python tratava U+001C como espaço e o "Art. 313" citado
+    virava artigo da própria lei (203 dispositivos em vez de 199) — e divergia do
+    porte TypeScript. Agora voltam a ser “ ”.
+- Paridade com o porte TypeScript do Conecta AI conferida em 18 normas reais
+  (12 do corpus original + as 6 afetadas): dispositivos idênticos em todas.
+- +3 testes (`test_structure_and_source.py`).
+
 ## [0.1.1] - 2026-09-23
 
 ### Fixed

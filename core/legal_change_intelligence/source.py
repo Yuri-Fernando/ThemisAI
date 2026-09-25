@@ -37,6 +37,13 @@ def decode_planalto_bytes(raw: bytes) -> str:
 
 def html_to_legal_text(markup: str) -> str:
     """Converte o HTML de uma norma em texto com um bloco por linha."""
+    # NUL (U+0000) aparece em alguns HTMLs do Planalto (ex.: Lei 11.340) e o
+    # Postgres recusa em colunas text — remove antes de tudo. Na mesma lei, U+001C
+    # e U+001D são aspas curvas mal codificadas em volta do texto que ela insere em
+    # outras leis ("acrescido do seguinte inciso: “Art. 313...”"): voltam a ser aspas,
+    # senão o artigo citado vira um artigo da própria lei (e `\s` do Python trata
+    # U+001C como espaço, divergindo do TypeScript).
+    markup = markup.replace("\x00", "").replace("\x1c", "“").replace("\x1d", "”")
     text = _DROP_BLOCKS_RE.sub(" ", markup)
     text = re.sub(r"(?s)<!--.*?-->", " ", text)
     # Remoção repetida: tags de tachado às vezes vêm aninhadas.
@@ -48,4 +55,7 @@ def html_to_legal_text(markup: str) -> str:
     text = _TAG_RE.sub(" ", text)
     text = html.unescape(text).replace(" ", " ")
     lines = (re.sub(r"[ \t]+", " ", line).strip() for line in text.split("\n"))
+    # Leis antigas do Planalto (ex.: 7.357 Cheque, 5.474 Duplicatas) escrevem
+    # "Art . 1º" — sem isto o parser não reconhece nenhum artigo.
+    lines = (re.sub(r"^Art \.", "Art.", line) for line in lines)
     return "\n".join(line for line in lines if line)
